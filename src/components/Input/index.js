@@ -1,5 +1,5 @@
 import React, { forwardRef} from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import Icon from 'react-native-vector-icons/Feather'
 import PropTypes from 'prop-types';
 // -----------------------------------------------------------------------------
 import { Container, TInput } from './styles';

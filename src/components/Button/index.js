@@ -1,8 +1,9 @@
 import React from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { RectButtonProperties } from 'react-native-gesture-handler';
 // -----------------------------------------------------------------------------
-import { Container, Text } from './styles';
+import { Container, ButtonText } from './styles';
 // -----------------------------------------------------------------------------
 export default function Button({ children, loading, ...rest }) {
   // -----------------------------------------------------------------------------
@@ -11,13 +12,13 @@ export default function Button({ children, loading, ...rest }) {
       {loading ? (
         <ActivityIndicator size="small" color="#FFF" />
       ) : (
-        <Text>{children}</Text>
+        <View>{children}</View>
       )}
     </Container>
   );
 }
 Button.propTypes = {
-  children: PropTypes.string.isRequired,
+  // children: PropTypes.object.isRequired,
   loading: PropTypes.bool,
 };
 Button.defaultProps = {

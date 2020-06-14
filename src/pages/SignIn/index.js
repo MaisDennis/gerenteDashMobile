@@ -1,60 +1,99 @@
 import React, { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image } from 'react-native';
-import { useDispatch } from 'react-redux';
+import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
+import { signInRequest } from '~/store/modules/worker/actions';
 import Background from '~/components/Background';
 import logo from '~/assets/logo.png';
 import {
-  Container,
-  Form,
-  FormInput,
-  SubmitButton,
-  SignLink,
-  SignLinkText,
+  Container, ImageLogo, Title, Div1, Div2,
+  Div3, Div4, FormUser, FormWorker, FormInputUserEmail, FormInputWorkerId,
+  SubmitButton, FormInputUserPassword, FormInputWorkerPassword,
 } from './styles';
-import { signInRequest } from '~/store/modules/auth/actions';
 // -----------------------------------------------------------------------------
 export default function SignIn({ navigation }) {
-  const passwordRef = useRef();
+  const idRef = useRef();
+  const userRef = useRef();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [workerId, setWorkerId] = useState('');
+  const loading = useSelector(state => state.worker.loading);
+  const workerData = useSelector(state => state.worker.workerData);
+  const signed = useSelector(state => state.worker.signed);
 
-  function handleSubmit() {
-    dispatch(signInRequest(email, password));
+  async function handleSubmit() {
+    await dispatch(signInRequest(workerId));
+    if (signed == true) {
+      await navigation.navigate('TabRoutes')
+    }
+
   }
   // -----------------------------------------------------------------------------
   return (
     <Background>
       <Container>
-        <Image source={logo} />
-        <Form>
-          <FormInput
-            icon="mail-outline"
-            keboardType="email-address"
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="Digite seu e-mail"
-            returnKeyType="next"
-            onSubmitEditing={() => passwordRef.current.focus()}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <FormInput
-            icon="lock-outline"
-            secureTextEntry
-            placeholder="Sua senha secreta"
-            ref={passwordRef}
-            returnKeyType="send"
-            onSubmitEditing={handleSubmit}
-            value={password}
-            onChangeText={setPassword}
-          />
-          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
-        </Form>
-        <SignLink onPress={() => navigation.navigate('SignUp')}>
-          <SignLinkText>Criar conta gratuita</SignLinkText>
-        </SignLink>
+        <ImageLogo source={logo} />
+        <Div1>
+          <Div2>
+            <Title>Coordenador</Title>
+            <Div3>
+            <Icon name='user' size={30} color='#fff'/>
+            </Div3>
+
+            <FormUser>
+              <FormInputUserEmail
+                icon="log-in"
+                placeholder="email"
+                ref={userRef}
+                returnKeyType="send"
+
+                value={userEmail}
+                onChangeText={setUserEmail}
+              />
+              <FormInputUserPassword
+                icon="log-in"
+                placeholder="senha"
+              />
+              <SubmitButton loading={loading} onPress={handleSubmit}><Icon name='play-circle' size={24} color='#fff'/></SubmitButton>
+            </FormUser>
+          </Div2>
+
+          <Div2>
+            <Title>Encarregados</Title>
+            <Div3>
+              <Div4>
+                <Icon name='user' size={30} color='#fff'/>
+                <Icon name='user' size={30} color='#fff'/>
+              </Div4>
+              <Div4>
+                <Icon name='user' size={30} color='#fff'/>
+                <Icon name='user' size={30} color='#fff'/>
+              </Div4>
+
+            </Div3>
+
+            <FormWorker>
+              <FormInputWorkerId
+                icon="log-in"
+                placeholder="ID"
+                ref={idRef}
+                returnKeyType="send"
+                onSubmitEditing={handleSubmit}
+                value={workerId}
+                onChangeText={setWorkerId}
+              />
+              <FormInputWorkerPassword
+                icon="log-in"
+                placeholder="senha"
+              />
+              <SubmitButton loading={loading} onPress={handleSubmit}><Icon name='play-circle' size={24} color='#fff'/></SubmitButton>
+            </FormWorker>
+          </Div2>
+        </Div1>
+
+        {/* <SignLink onPress={() => navigation.navigate('SignUp')}>
+        </SignLink> */}
       </Container>
     </Background>
   );

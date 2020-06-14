@@ -1,14 +1,23 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, HeaderStyleInterpolators, TransitionPresets } from '@react-navigation/stack';
 import {StyleSheet, Button, View, Text, Image} from 'react-native';
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 // -----------------------------------------------------------------------------
-import Main from './pages/Main';
-import User from './pages/User';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Feed from './pages/Feed';
+import Confirm from './pages/Confirm';
+import TabRoutes from '~/components/TabRoutes';
+import ip from '~/services/ip';
+
+import Main from './pages/Main';
+import User from './pages/User';
 // -----------------------------------------------------------------------------
+
 function HomeScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -88,27 +97,57 @@ function LogoTitle() {
 const Stack = createStackNavigator();
 // -----------------------------------------------------------------------------
 export default function App() {
+  const signed = useSelector(state => state.worker.signed);
+
+  const formattedDate = fdate =>
+  fdate == null
+    ? '-'
+    : format(fdate, "dd 'de' MMMM',' yyyy", { locale: pt });
+const toDate = formattedDate(new Date())
+  // -----------------------------------------------------------------------------
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignIn"
+      <Stack.Navigator
+        initialRouteName={signed ? 'TabRoutes' : 'SignIn'}
         screenOptions={{
-          headerStyle: {
-            backgroundColor: '#3b3f42',
-          },
+          headerStyle: { backgroundColor: '#111' },
           headerTintColor: '#F5F5F5',
-          headerTitleStyle: {
-            fontWeight: 'Bold',
-          },
+          headerTitleStyle: { fontWeight: 'bold' },
+          headerTitleAlign: "center",
+          ...TransitionPresets.ModalTransition,
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} options={
-          {
-            headerTitle: props => <LogoTitle {...props} />
-          }}/>
-        <Stack.Screen name="Details" component={DetailsScreen} />
+       <Stack.Screen
+          name="TabRoutes"
+          component={TabRoutes}
+          options={{
+            headerTitle: (
+              <>
+                <Text>
+                {toDate}
+                </Text>
+                {/* <Image style={{ width: 50, height: 50, borderRadius: 50 }}
+                  source={{
+                    uri:
+                    `${ip}/files/${avatarPath}`,
+                    // 'http://10.0.3.2:3333/files/eb600e7275d64eedcf5c0afa367e3222.jpeg',
+                  }}
+                /> */}
+              </>
+            ),
+            headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+            headerShown: true,
+            headerBackTitleVisible: true,
+
+            headerStyle: {
+              backgroundColor: '#111',
+            },
+          }}
+        />
         <Stack.Screen name="SignIn" component={SignIn}
           options={{
             title: 'Entrar',
+            headerShown: false,
           }}
         />
         <Stack.Screen name="SignUp" component={SignUp}
@@ -116,15 +155,46 @@ export default function App() {
             title: 'Cadastrar',
           }}
         />
+         <Stack.Screen name="Feed" component={Feed}
+          options={{
+            title: 'Reportar',
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#111',
+          },
+          }}
+        />
+        <Stack.Screen name="Confirm" component={Confirm}
+          options={{
+            title: 'Confirmar',
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+          headerStyle: {
+            backgroundColor: '#111',
+          },
+          }}
+        />
+        {/* <Stack.Screen name="Home" component={HomeScreen} options={
+          {
+            headerTitle: props => <LogoTitle {...props} />
+          }}/>
+        <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen
         name="Profile"
         test="test"
         component={ProfileScreen}
         options={({ route }) => ({ title: route.params.theName })}
-      />
+        /> */}
       </Stack.Navigator>
-
     </NavigationContainer>
-
   );
 }

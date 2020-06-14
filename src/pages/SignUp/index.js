@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Image } from 'react-native';
 // -----------------------------------------------------------------------------
 import Background from '~/components/Background';
@@ -9,10 +9,8 @@ import {
   Form,
   FormInput,
   SubmitButton,
-  SignLink,
-  SignLinkText,
 } from './styles';
-import { signUpRequest } from '~/store/modules/auth/actions';
+import { signUpRequest } from '~/store/modules/worker/actions';
 // -----------------------------------------------------------------------------
 export default function SignUp({ navigation }) {
   const emailRef = useRef();
@@ -21,6 +19,7 @@ export default function SignUp({ navigation }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const loading = useSelector(state => state.worker.loading);
 
   function handleSubmit() {
     dispatch(signUpRequest(name, email, password));
