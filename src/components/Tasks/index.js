@@ -25,6 +25,7 @@ export default function Task({ data, navigation }) {
     pastDueDate()
   }, [])
 
+  console.tron.log(data)
   function handleFeed() {
     navigation.navigate('Feed', { task_id: data.id });
   }
@@ -45,6 +46,7 @@ export default function Task({ data, navigation }) {
     <Container>
       {
         data.end_date
+          // Finished tasks
           ? <>
               <High>
                 <TaskIcon name="clipboard" size={20} style={{ color: '#999'}}/>
@@ -52,7 +54,7 @@ export default function Task({ data, navigation }) {
               </High>
               <Middle>
                 <Div1 style={{ borderColor: '#999'}}>
-                  <Span1>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Span1>
+                  <Span1>{data.description}</Span1>
                 </Div1>
               </Middle>
               <Low>
@@ -75,6 +77,8 @@ export default function Task({ data, navigation }) {
                 </DetailDiv>
               </Low>
             </>
+
+          // Unfinished tasks
           : <>
               <High>
                 <TaskIcon name="clipboard" pastDueDate={pastDueDate()}/>
@@ -82,7 +86,7 @@ export default function Task({ data, navigation }) {
               </High>
               <Middle>
                 <Div1 pastDueDate={pastDueDate()}>
-                  <Span1>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Span1>
+                  <Span1>{data.description}</Span1>
                 </Div1>
               </Middle>
               <Low>

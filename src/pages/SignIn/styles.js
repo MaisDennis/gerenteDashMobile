@@ -26,7 +26,7 @@ export const Title = styled.Text`
 font-size: 18px;
 margin: 8px auto;
 /* background: #999; */
-color: #fff;
+color: #222;
 `;
 
 export const StyledIcon = styled(Icon)`
@@ -38,12 +38,12 @@ flex-direction: row;
 justify-content: space-between;
 /* background: #5edc1f; */
 width: 100%;
-height: 40%;
+height: 50%;
 padding: 4px;
 `;
 
 export const Div2 = styled.View`
-/* background: #0000ff; */
+background: #F5F5F5;
 width: 49%;
 height: 100%;
 border: 2px #fff;
@@ -77,13 +77,13 @@ margin: 0;
 `;
 
 export const FormInputUserEmail = styled(Input)`
-  margin: auto;
+  margin: 4px auto;
   width: 80%;
   padding-left: 10px;
 `;
 
 export const FormInputWorkerId = styled(Input)`
-  margin: auto;
+  margin: 4px auto;
   width: 80%;
   padding-left: 10px;
 `;

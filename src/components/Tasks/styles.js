@@ -3,13 +3,13 @@ import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 
 export const TaskIcon = styled(Icon)`
-color: ${props => props.pastDueDate == true ? 'red' : '#009966'};
+color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
 font-size: 20px;
 `;
 
 export const Container = styled.View`
   margin-bottom: 14px;
-  border-radius: 4px;
+  border-radius: 14px;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@ export const Div1 = styled.View`
   justify-content: space-between;
   flex-direction: column;
   border: 1px;
-border-color: ${props => props.pastDueDate == true ? 'red' : '#009966'};
+border-color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
   align-items: center;
   width: 90%;
   padding: 4px;
@@ -76,12 +76,12 @@ export const Tag = styled.Text`
 export const Name = styled.Text`
   font-weight: bold;
   font-size: 16px;
-  color: ${props => props.pastDueDate == true ? 'red' : '#009966'};
+  color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
   margin: auto 4px;
 `;
 
 export const Time = styled.Text`
-  color: ${props => props.pastDueDate == true ? 'red' : '#009966'};
+  color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
   font-weight: bold;
   font-size: 14px;
   margin-top: 2px;

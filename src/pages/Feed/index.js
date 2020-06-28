@@ -6,23 +6,19 @@ import Icon from 'react-native-vector-icons/Feather';
 import api from '~/services/api';
 import { Header, Container, Form, FormInput, SubmitButton } from './styles';
 // -----------------------------------------------------------------------------
-export default function Feed({ route }) {
+export default function Feed({ navigation, route }) {
   const idRef = useRef();
   const [content, setContent] = useState('');
   const id = useSelector(state => state.worker.workerId);
-
   const { task_id } = route.params;
-  console.tron.log(task_id);
 
   async function handleFeed() {
-    // console.tron.log(id);
-
-
     await api.post(`tasks/${task_id}/tfeed`, {
       worker_id: id,
       user_id: null,
       feed: content,
     });
+    navigation.navigate('Dashboard');
   }
   // -----------------------------------------------------------------------------
   return (

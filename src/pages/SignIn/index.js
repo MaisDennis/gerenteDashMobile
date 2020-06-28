@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
-import { signInRequest } from '~/store/modules/worker/actions';
+import { signInRequest, signFailure } from '~/store/modules/worker/actions';
+
 import Background from '~/components/Background';
 import logo from '~/assets/logo.png';
 import {
@@ -22,10 +23,14 @@ export default function SignIn({ navigation }) {
   const workerData = useSelector(state => state.worker.workerData);
   const signed = useSelector(state => state.worker.signed);
 
-  async function handleSubmit() {
-    await dispatch(signInRequest(workerId));
-    if (signed == true) {
-      await navigation.navigate('TabRoutes')
+  function handleSubmit() {
+    dispatch(signInRequest(workerId));
+
+
+    if (signed) {
+      // console.tron.log('signed')
+      // // dispatch(signFailure());
+      navigation.navigate('TabRoutes')
     }
 
   }
@@ -38,7 +43,7 @@ export default function SignIn({ navigation }) {
           <Div2>
             <Title>Coordenador</Title>
             <Div3>
-            <Icon name='user' size={30} color='#fff'/>
+            <Icon name='user' size={30} color='#009966'/>
             </Div3>
 
             <FormUser>
@@ -63,12 +68,12 @@ export default function SignIn({ navigation }) {
             <Title>Encarregados</Title>
             <Div3>
               <Div4>
-                <Icon name='user' size={30} color='#fff'/>
-                <Icon name='user' size={30} color='#fff'/>
+                <Icon name='user' size={30} color='#ffdd33'/>
+                <Icon name='user' size={30} color='#009966'/>
               </Div4>
               <Div4>
-                <Icon name='user' size={30} color='#fff'/>
-                <Icon name='user' size={30} color='#fff'/>
+                <Icon name='user' size={30} color='#009966'/>
+                <Icon name='user' size={30} color='#ffdd33'/>
               </Div4>
 
             </Div3>

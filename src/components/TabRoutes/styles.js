@@ -43,7 +43,7 @@ export const Span1 = styled.Text`
 
 export const Title = styled.Text`
   font-size: 24px;
-  color: #111;
+  color: #222;
   font-weight: bold;
   align-self: center;
 `;
@@ -57,35 +57,14 @@ export const DivBottomheader = styled.View`
 
 export const Title2 = styled.Text`
   font-size: 24px;
-  color: #111;
+  color: #222;
   font-weight: bold;
-`;
-
-export const Title3 = styled.Text`
-  font-weight: bold;
-  font-size: 14px;
-  color: #999;
-  margin: auto;
 `;
 
 export const Div4 = styled.View`
   display: flex;
   flex-direction: row;
   margin: auto 5px;
-`;
-
-export const Span2 = styled.Text`
-  font-weight: bold;
-  font-size: 14px;
-  color: ${props => (props.query === '' ? '#111' : '#999')};
-  margin-left: 5px;
-`;
-
-export const Span3 = styled.Text`
-  font-weight: bold;
-  font-size: 14px;
-  color: ${props => (props.query === 'delivered' ? '#111' : '#999')};
-  margin-left: 5px;
 `;
 
 export const List = styled.FlatList.attrs({

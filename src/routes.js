@@ -6,16 +6,18 @@ import { createStackNavigator, HeaderStyleInterpolators, TransitionPresets } fro
 import {StyleSheet, Button, View, Text, Image} from 'react-native';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import { useEffect } from 'react'
 // -----------------------------------------------------------------------------
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Feed from './pages/Feed';
 import Confirm from './pages/Confirm';
 import TabRoutes from '~/components/TabRoutes';
-import ip from '~/services/ip';
+import * as NavigationService from '~/services/NavigationService.js'
+// import ip from '~/services/ip';
 
-import Main from './pages/Main';
-import User from './pages/User';
+// import Main from './pages/Main';
+// import User from './pages/User';
 // -----------------------------------------------------------------------------
 
 function HomeScreen({ navigation }) {
@@ -104,18 +106,30 @@ export default function App() {
     ? '-'
     : format(fdate, "dd 'de' MMMM',' yyyy", { locale: pt });
 const toDate = formattedDate(new Date())
+
+// useEffect(() => {
+//   NavigationService.setNavigator(this.Navigator);
+// }, [])
   // -----------------------------------------------------------------------------
   return (
-    <NavigationContainer>
+    <NavigationContainer
+
+    >
       <Stack.Navigator
-        initialRouteName={signed ? 'TabRoutes' : 'SignIn'}
+        // initialRouteName={signed === true ? 'TabRoutes' : 'SignIn'}
+        // ref={nav => {
+        //   this.Navigator = nav;
+        // }}
+        initalRouteName={'TabRoutes'}
         screenOptions={{
           headerStyle: { backgroundColor: '#111' },
-          headerTintColor: '#F5F5F5',
+          headerTintColor: '#ffffff',
           headerTitleStyle: { fontWeight: 'bold' },
           headerTitleAlign: "center",
           ...TransitionPresets.ModalTransition,
         }}
+
+
       >
        <Stack.Screen
           name="TabRoutes"
@@ -140,7 +154,7 @@ const toDate = formattedDate(new Date())
             headerBackTitleVisible: true,
 
             headerStyle: {
-              backgroundColor: '#111',
+              backgroundColor: '#222',
             },
           }}
         />

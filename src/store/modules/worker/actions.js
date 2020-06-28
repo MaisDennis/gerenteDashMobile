@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function signInRequest(workerId, navigation) {
+export function signInRequest(workerId) {
   return {
     type: '@worker/SIGN_IN_REQUEST',
-    payload: { workerId, navigation },
+    payload: { workerId },
   };
 }
 

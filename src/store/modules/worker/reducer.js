@@ -39,18 +39,18 @@ export default function worker(state= INITIAL_STATE, action) {
       }
       case '@worker/SIGN_OUT' : {
         draft.signed = false;
-        draft.workerData = {
-          id: 0,
-          name: 'Duff McKagen',
-          cpf: '92163042006',
-          nickname: 'Duff',
-          avatar_id: 7,
-          avatar: {
-            url: 'http://localhost:3333/files/fe5f5b66b83cd500c6e89e3f9bf18d62.jpeg',
-            name: 'WhatsApp Image 2020-04-25 at 16.19.11.jpeg',
-            path: 'fe5f5b66b83cd500c6e89e3f9bf18d62.jpeg',
-          }
-        }
+        // draft.workerData = {
+        //   id: 0,
+        //   name: 'Duff McKagen',
+        //   cpf: '92163042006',
+        //   nickname: 'Duff',
+        //   avatar_id: 7,
+        //   avatar: {
+        //     url: 'http://localhost:3333/files/fe5f5b66b83cd500c6e89e3f9bf18d62.jpeg',
+        //     name: 'WhatsApp Image 2020-04-25 at 16.19.11.jpeg',
+        //     path: 'fe5f5b66b83cd500c6e89e3f9bf18d62.jpeg',
+        //   }
+        // }
         break;
       }
       case '@worker/WORKER_DATA':

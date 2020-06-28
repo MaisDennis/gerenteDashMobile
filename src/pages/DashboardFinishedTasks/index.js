@@ -8,7 +8,7 @@ import { Container, Title3, List } from './styles';
 // -----------------------------------------------------------------------------
 export default function DashboardFinishedTasks({ navigation }) {
   const [tasks, setTasks] = useState([]);
-  const id = useSelector(state => state.worker.workerData.id);
+  const name = useSelector(state => state.worker.workerData.name);
 
   useEffect(() => {
     loadTasks();
@@ -16,7 +16,7 @@ export default function DashboardFinishedTasks({ navigation }) {
 
   async function loadTasks() {
     const response = await api.get(`tasks/finished`, {
-      params: { test: id },
+      params: { test: name },
     });
     setTasks(response.data);
   }
