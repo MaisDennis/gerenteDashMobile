@@ -17,3 +17,14 @@ Icons:
   ];
 
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+Color palette
+  1.  #444444
+  2.  #5edc1f green apple
+  3.  #F5F5F5
+  3.  #fff
+  4.  #fff44f yellow cattleya
+  5.  #ffdd33 yellow Bell Pepper
+  6.  #ff0f0f red alert
+  7.  #f64C75
+  8.  #009966

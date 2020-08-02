@@ -2,29 +2,36 @@ import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 
+export const Container = styled.View`
+  margin-bottom: 14px;
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+`;
+
 export const TaskIcon = styled(Icon)`
 color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
 font-size: 20px;
 `;
 
-export const Container = styled.View`
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-`;
-
-export const High = styled.View`
+export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
   margin: 8px;
 `;
 
-export const Middle = styled.View`
+export const NameText = styled.Text`
+  font-weight: bold;
+  font-size: 16px;
+  color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+  margin: auto 4px;
+`;
+
+export const DescriptionView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -32,21 +39,21 @@ export const Middle = styled.View`
 
 `;
 
-export const Div1 = styled.View`
+export const DescriptionBorderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border: 1px;
-border-color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+  border: 2px;
+  border-color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
   align-items: center;
   width: 90%;
   padding: 4px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
 `;
 
-export const Span1 = styled.Text`
-  color: #111;
+export const DescriptionSpan = styled.Text`
+  color: #222;
   font-weight: normal;
   font-size: 14px;
   margin: 2px;
@@ -55,29 +62,22 @@ export const Span1 = styled.Text`
   margin: 4px;
 `;
 
-export const Low = styled.View`
+export const DatesAndButtonView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
 `;
 
-export const Info = styled.View`
+export const TagView = styled.View`
   margin:auto;
   align-items: center;
 `;
 
-export const Tag = styled.Text`
+export const Label = styled.Text`
   font-weight: normal;
   font-size: 13px;
   color: #888;
-`;
-
-export const Name = styled.Text`
-  font-weight: bold;
-  font-size: 16px;
-  color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
-  margin: auto 4px;
 `;
 
 export const Time = styled.Text`
@@ -87,9 +87,11 @@ export const Time = styled.Text`
   margin-top: 2px;
 `;
 
-export const DetailDiv = styled.View`
+export const ButtonView = styled.View`
   text-align: center;
+  width: 45%;
   margin: auto;
+  /* background: #f4f; */
 `;
 
 export const HrLine = styled.View`

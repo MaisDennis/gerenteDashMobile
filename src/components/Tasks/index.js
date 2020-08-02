@@ -7,9 +7,8 @@ import pt from 'date-fns/locale/pt';
 import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 import {
-  Container, High, Middle, Div1, Span1, Low,
-  Info, Tag, Name, Time, DetailDiv, HrLine, FinishedButton,
-  TaskIcon
+  Container, TitleView, TaskIcon, NameText, DescriptionView, DescriptionBorderView, DescriptionSpan,
+  DatesAndButtonView, TagView, Label, Time, ButtonView, HrLine, FinishedButton
 } from './styles';
 // -----------------------------------------------------------------------------
 const formattedDate = fdate =>
@@ -25,13 +24,14 @@ export default function Task({ data, navigation }) {
     pastDueDate()
   }, [])
 
-  console.tron.log(data)
-  function handleFeed() {
-    navigation.navigate('Feed', { task_id: data.id });
+  function handleMessage() {
+    navigation.navigate('Message', {
+      task_id: data.id, user_id: data.user_id, taskName: data.name, taskDescription: data.description
+    });
   }
 
   function handleConfirm() {
-    navigation.navigate('Confirm', { task_id: data.id });
+    navigation.navigate('Confirm', { task_id: data.id, taskName: data.name });
   }
 
   function pastDueDate() {
@@ -48,70 +48,70 @@ export default function Task({ data, navigation }) {
         data.end_date
           // Finished tasks
           ? <>
-              <High>
+              <TitleView>
                 <TaskIcon name="clipboard" size={20} style={{ color: '#999'}}/>
-                <Name style={{ color: '#999'}}>{data.name} </Name>
-              </High>
-              <Middle>
-                <Div1 style={{ borderColor: '#999'}}>
-                  <Span1>{data.description}</Span1>
-                </Div1>
-              </Middle>
-              <Low>
-                <Info>
-                  <Tag>Início</Tag>
+                <NameText style={{ color: '#999'}}>{data.name} </NameText>
+              </TitleView>
+              <DescriptionView>
+                <DescriptionBorderView style={{ borderColor: '#999'}}>
+                  <DescriptionSpan>{data.description}</DescriptionSpan>
+                </DescriptionBorderView>
+              </DescriptionView>
+              <DatesAndButtonView>
+                <TagView>
+                  <Label>Início</Label>
                     <Time style={{ color: '#999'}}>{formattedDate(data.start_date)}</Time>
-                </Info>
-                <Info>
-                  <Tag>Entrega</Tag>
+                </TagView>
+                <TagView>
+                  <Label>Entrega</Label>
                     <Time style={{ color: '#999'}}>{formattedDate(data.due_date)}</Time>
-                </Info>
-              </Low>
+                </TagView>
+              </DatesAndButtonView>
               <HrLine/>
-              <Low>
-                <DetailDiv>
+              <DatesAndButtonView>
+                <ButtonView>
                     <FinishedButton><Icon name="message-square" size={20} color="#fff"/></FinishedButton>
-                </DetailDiv>
-                <DetailDiv>
-                    <FinishedButton><Icon name="check" size={20} color="#fff" /></FinishedButton>
-                </DetailDiv>
-              </Low>
+                </ButtonView>
+                <ButtonView>
+                    <FinishedButton><Icon name="check-circle" size={20} color="#fff" /></FinishedButton>
+                </ButtonView>
+              </DatesAndButtonView>
             </>
 
           // Unfinished tasks
           : <>
-              <High>
+              <TitleView>
                 <TaskIcon name="clipboard" pastDueDate={pastDueDate()}/>
-                <Name pastDueDate={pastDueDate()}>{data.name} </Name>
-              </High>
-              <Middle>
-                <Div1 pastDueDate={pastDueDate()}>
-                  <Span1>{data.description}</Span1>
-                </Div1>
-              </Middle>
-              <Low>
-                <Info>
-                  <Tag>Início</Tag>
+                <NameText pastDueDate={pastDueDate()}>{data.name} </NameText>
+              </TitleView>
+              <DescriptionView>
+                <DescriptionBorderView pastDueDate={pastDueDate()}>
+                  <DescriptionSpan>{data.description}</DescriptionSpan>
+                </DescriptionBorderView>
+              </DescriptionView>
+              <DatesAndButtonView>
+                <TagView>
+                  <Label>Início</Label>
                     <Time pastDueDate={pastDueDate()}>{formattedDate(data.start_date)}</Time>
-                </Info>
-                <Info>
-                  <Tag>Entrega</Tag>
+                </TagView>
+                <TagView>
+                  <Label>Entrega</Label>
                     <Time pastDueDate={pastDueDate()}>{formattedDate(data.due_date)}</Time>
-                </Info>
-              </Low>
+                </TagView>
+              </DatesAndButtonView>
               <HrLine/>
-              <Low>
-                <DetailDiv>
-                  <TouchableOpacity onPress={handleFeed}>
+              <DatesAndButtonView>
+                <ButtonView>
+                  <TouchableOpacity onPress={handleMessage}>
                     <Button><Icon name="message-square" size={20} color="#fff" /></Button>
                   </TouchableOpacity>
-                </DetailDiv>
-                <DetailDiv>
+                </ButtonView>
+                <ButtonView>
                   <TouchableOpacity onPress={handleConfirm}>
-                    <Button><Icon name="check" size={20} color="#fff" /></Button>
+                    <Button><Icon name="check-circle" size={20} color="#fff" /></Button>
                   </TouchableOpacity>
-                </DetailDiv>
-              </Low>
+                </ButtonView>
+              </DatesAndButtonView>
             </>
       }
     </Container>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // -----------------------------------------------------------------------------
-// import AvatarInput from '~/components/AvatarInput';
 import Task from '~/components/Tasks';
 import api from '~/services/api';
 import { Container, Title3, List } from './styles';

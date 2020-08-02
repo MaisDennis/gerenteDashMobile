@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // -----------------------------------------------------------------------------
-// import AvatarInput from '~/components/AvatarInput';
 import Task from '~/components/Tasks';
 import { workerCheckIn, signOut } from '~/store/modules/worker/actions';
 import api from '~/services/api';
@@ -13,13 +12,12 @@ export default function Dashboard({ navigation }) {
 
   useEffect(() => {
     loadTasks();
-  }, []);
+  }, [ name ]);
 
   async function loadTasks() {
     const response = await api.get(`tasks/unfinished`, {
       params: { test: name },
     });
-
     setTasks(response.data);
   }
   // -----------------------------------------------------------------------------

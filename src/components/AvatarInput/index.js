@@ -7,8 +7,6 @@ import Input from '~/components/Input';
 import insert_photo from '~/assets/insert_photo-24px.svg';
 import api from '~/services/api';
 
-
-
 export default function AvatarInput() {
   const { defaultValue, registerField } = useField('avatar');
   const [file, setFile] = useState(defaultValue && defaultValue.id);

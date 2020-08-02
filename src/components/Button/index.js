@@ -1,9 +1,8 @@
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import PropTypes from 'prop-types';
-import { RectButtonProperties } from 'react-native-gesture-handler';
 // -----------------------------------------------------------------------------
-import { Container, ButtonText } from './styles';
+import { Container } from './styles';
 // -----------------------------------------------------------------------------
 export default function Button({ children, loading, ...rest }) {
   // -----------------------------------------------------------------------------

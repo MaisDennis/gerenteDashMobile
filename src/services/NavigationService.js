@@ -3,11 +3,8 @@ import { NavigationActions } from '@react-navigation/stack'
 const config = {}
 
 export function setNavigator(nav) {
-
     config.navigator = nav;
-
 }
-
 
 export function navigate(routeName, params) {
   console.tron.log(config.navigator)

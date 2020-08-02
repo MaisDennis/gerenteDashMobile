@@ -1,6 +1,5 @@
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
-import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
 import Input from '~/components/Input';
 import Button from '~/components/Button';
@@ -18,88 +17,87 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 export const ImageLogo = styled.Image`
   width: 150px;
   height: 150px;
-  border-radius: 25px;
-  margin: 20px;
+  border-radius: 24px;
+  /* margin: 24px; */
+`;
+
+export const ImageGodtaskerFont = styled.Image`
+  width: 240px;
+  height: 80px;
+
+  margin: 24px;
 `;
 
 export const Title = styled.Text`
-font-size: 18px;
-margin: 8px auto;
+font-size: 20px;
+font-weight: bold;
+margin: 14px auto;
 /* background: #999; */
-color: #222;
-`;
-
-export const StyledIcon = styled(Icon)`
-margin: 0 auto;
+color: #58595B;
 `;
 
 export const Div1 = styled.View`
 flex-direction: row;
-justify-content: space-between;
-/* background: #5edc1f; */
 width: 100%;
-height: 50%;
-padding: 4px;
+/* background: #5edc1f; */
 `;
 
 export const Div2 = styled.View`
-background: #F5F5F5;
-width: 49%;
+width: 80%;
 height: 100%;
-border: 2px #fff;
-border-radius: 4px;
 margin: auto;
-`;
-
-export const Div3 = styled.View`
-flex-direction: row;
-margin: auto;
-/* background: #5edc1f; */
-border-radius: 4px;
-`;
-
-export const Div4 = styled.View`
-
+/* background: #fff; */
 `;
 
 export const FormUser = styled.View`
 width: 100%;
-height: 54%;
+height: auto;
 margin: 0 auto;
 /* background: #c4ce3b; */
 `;
 
 export const FormWorker = styled.View`
-width: 100%;
-height: 54%;
-margin: 0;
-/* background: #c4ce3b; */
+  width: 100%;
+  height: auto;
+  margin: 0;
+  /* background: #c4ce3b; */
 `;
 
 export const FormInputUserEmail = styled(Input)`
+  background: rgba(0,0,0,0.3);
   margin: 4px auto;
-  width: 80%;
+  width: 90%;
   padding-left: 10px;
 `;
 
 export const FormInputWorkerId = styled(Input)`
+  background: rgba(0,0,0,0.3);
   margin: 4px auto;
-  width: 80%;
+  width: 90%;
   padding-left: 10px;
 `;
 
 export const FormInputUserPassword = styled(Input)`
-  margin: auto;
-  width: 80%;
+  background: rgba(0,0,0,0.3);
+  margin: 4px auto;
+  width: 90%;
   padding-left: 10px;
 `;
 
 export const FormInputWorkerPassword = styled(Input)`
-  margin: auto;
-  width: 80%;
+  background: rgba(0,0,0,0.3);
+  margin: 4px auto;
+  width: 90%;
   padding-left: 10px;
 `;
 
 export const SubmitButton = styled(Button)`
-  margin: auto;
+  margin: 14px auto;
+`;
+
+export const ButtonText = styled.Text`
+font-size: 16px;
+font-weight: bold;
+/* background: #999; */
+color: #fff;
 `;

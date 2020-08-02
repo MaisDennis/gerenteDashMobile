@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react';
 import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
-import { Container, CameraButton, Div4 } from './styles';
+import { Container, TitleView, TaskName, CameraButton, CameraView } from './styles';
 import api from '~/services/api';
 // -----------------------------------------------------------------------------
 export default function Confirm({ route }) {
-  const { task_id } = route.params;
+  const { task_id, taskName } = route.params;
   const camera = useRef(null);
   const [photo, setPhoto] = useState();
 
@@ -18,7 +18,6 @@ export default function Confirm({ route }) {
         // forceUpOrientation: true,
         // fixOrientation: true,
       };
-      // const data = await camera.current.takePictureAsync(options);
       const data = await camera.current.takePictureAsync(options);
 
       setPhoto({
@@ -41,49 +40,42 @@ export default function Confirm({ route }) {
         type: 'image/*',
         name: `signature_${task_id}.jpg`,
       });
-//       const test = formData._parts[0]
-//       const twotest = test[1]
-//       const threetest = twotest
-// // %%%%%%%%%%%%%%%%%%%%%%%%%%
-// console.tron.log(threetest);
 
       const response = await api.post('signatures', formData);
 
       const signature_id = response.data.id;
 
-      await api.put(`tasks/${task_id}/t_end`, {
+      await api.put(`tasks/confirm/${task_id}`, {
         signature_id,
       });
-      console.tron.log(test);
     }
   }
   // -----------------------------------------------------------------------------
   return (
     <>
-      {/* <Header /> */}
       <Container>
-        <Div4>
-          <RNCamera
-            ref={camera}
-            style={{
+        <TitleView>
+          <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
+          <TaskName>{taskName}</TaskName>
+        </TitleView>
+        <RNCamera
+          ref={camera}
+          style={{
 
-              height: 600,
-              width: 400,
-              marginTop: 50,
-              marginBottom: 20,
-              marginLeft: 0,
-              marginRight: 0,
-
-
-              // height: 200,
-              // width: 350,
-            }}
-            type={RNCamera.Constants.Type.front}
-            flashMode={RNCamera.Constants.FlashMode.on}
-            captureAudio={false}
-          />
-          <CameraButton onPress={() => takePicture()}><Icon name='check' size={20} color='#fff'/></CameraButton>
-        </Div4>
+            height: 500,
+            width: 400,
+            marginTop: 50,
+            marginBottom: 20,
+            marginLeft: 0,
+            marginRight: 0,
+            // height: 200,
+            // width: 350,
+          }}
+          type={RNCamera.Constants.Type.front}
+          flashMode={RNCamera.Constants.FlashMode.on}
+          captureAudio={false}
+        />
+        <CameraButton onPress={() => takePicture()}><Icon name='camera' size={20} color='#fff'/></CameraButton>
       </Container>
     </>
   );

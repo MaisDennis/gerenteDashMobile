@@ -10,29 +10,18 @@ export const Header = styled.View`
   margin: 30px 30px 0px 30px;
 `;
 
-export const DivTopHeader = styled.View`
+export const TopHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin: 5px 5px 0 5px;
+  /* background: #F5F; */
 `;
 
-export const Div1 = styled.View`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`;
-
-export const Avatar = styled.Image`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin-right: 15px;
-`;
-
-export const Div2 = styled.View`
+export const TagView = styled.View`
   display: flex;
   flex-direction: column;
+  /* background: #444; */
 `;
 
 export const Span1 = styled.Text`
@@ -41,21 +30,21 @@ export const Span1 = styled.Text`
   color: #888;
 `;
 
-export const Title = styled.Text`
+export const TitleWorkerName = styled.Text`
   font-size: 24px;
   color: #222;
   font-weight: bold;
   align-self: center;
 `;
 
-export const DivBottomheader = styled.View`
+export const BottomHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin-top: 25px;
 `;
 
-export const Title2 = styled.Text`
+export const TitleTask = styled.Text`
   font-size: 24px;
   color: #222;
   font-weight: bold;

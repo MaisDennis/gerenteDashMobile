@@ -4,40 +4,55 @@ import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
 import api from '~/services/api';
-import { Header, Container, Form, FormInput, SubmitButton } from './styles';
+import {
+  Container, Form, TitleView, TaskName, TaskDescriptionView,
+  TaskDescriptionText, FormInput, SubmitButton
+} from './styles';
 // -----------------------------------------------------------------------------
-export default function Feed({ navigation, route }) {
+export default function Message({ navigation, route }) {
   const idRef = useRef();
   const [content, setContent] = useState('');
   const id = useSelector(state => state.worker.workerId);
-  const { task_id } = route.params;
+  const worker_name = useSelector( state => state.worker.workerData.name)
+  const { task_id, user_id, taskName, taskDescription } = route.params;
 
-  async function handleFeed() {
-    await api.post(`tasks/${task_id}/tfeed`, {
+  async function handleMessage() {
+    await api.post(`messages/mobile/${task_id}`, {
       worker_id: id,
-      user_id: null,
-      feed: content,
+      worker_name,
+      user_id,
+      message_worker: content,
     });
     navigation.navigate('Dashboard');
   }
   // -----------------------------------------------------------------------------
   return (
     <>
-      <Header />
       <Container>
+        <TitleView>
+          <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
+          <TaskName>{taskName}</TaskName>
+        </TitleView>
         <Form>
+          <TaskDescriptionView>
+            <TaskDescriptionText>
+              {taskDescription}
+            </TaskDescriptionText>
+          </TaskDescriptionView>
           <FormInput
             icon="edit-3"
-            keboardType="text"
+            keyboardType="default"
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Mensagem aqui."
+            placeholderTextColor="#c8c2c0"
+            multiline
             ref={idRef}
             returnKeyType="send"
             value={content}
             onChangeText={setContent}
           />
-          <SubmitButton onPress={handleFeed}><Icon name='check' size={20} color='#fff'></Icon></SubmitButton>
+          <SubmitButton onPress={handleMessage}><Icon name='mail' size={20} color='#fff'></Icon></SubmitButton>
         </Form>
       </Container>
     </>
