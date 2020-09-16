@@ -28,3 +28,5 @@ Color palette
   6.  #ff0f0f red alert
   7.  #f64C75
   8.  #009966
+  9.  #beef69 green cow
+  10. #ffeaac yellow canary

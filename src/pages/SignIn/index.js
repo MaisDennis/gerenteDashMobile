@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getRawValue } from 'react-native-masked-text'
 // -----------------------------------------------------------------------------
 import { signInRequest } from '~/store/modules/worker/actions';
 
@@ -9,19 +10,27 @@ import godtaskerFont from '~/assets/detective/godtaskerFontPlainGreySmall.png';
 import {
   Container, ImageLogo, ImageGodtaskerFont, Title, Div1, Div2, FormUser,
   FormWorker, FormInputUserEmail, FormInputWorkerId,
-  SubmitButton, ButtonText, FormInputUserPassword, FormInputWorkerPassword,
+  SubmitButton, ButtonText, FormInputUserPassword, FormInputWorkerPassword, PhoneMask
 } from './styles';
 // -----------------------------------------------------------------------------
 export default function SignIn({ navigation }) {
-  const idRef = useRef();
+  // const idRef = useRef();
   const dispatch = useDispatch();
   // const [userEmail, setUserEmail] = useState('');
-  const [workerId, setWorkerId] = useState('');
+  const [workerPhoneNumber, setWorkerPhoneNumber] = useState('');
+  const [workerPassword, setWorkerPassword] = useState('');
   const loading = useSelector(state => state.worker.loading);
   const signed = useSelector(state => state.worker.signed);
 
   function handleSubmit() {
-    dispatch(signInRequest(workerId));
+
+    const unmaskedWorkerPhoneNumber = (maskedPhoneNumber => maskedPhoneNumber.replace(/[()\s-]/g, ''))
+    // const unmaskedWorkerPhoneNumber = unMaskPhoneNumber(workerPhoneNumber)
+    // function unMaskPhoneNumber(maskedPhoneNumber) {
+    //   return (maskedPhoneNumber.replace(/[()\s-]/g, ''))
+    // }
+
+    dispatch(signInRequest(unmaskedWorkerPhoneNumber(workerPhoneNumber), workerPassword));
   }
 
   if (signed) {
@@ -56,19 +65,46 @@ export default function SignIn({ navigation }) {
           <Div2>
             <Title>Funcionários</Title>
             <FormWorker>
-              <FormInputWorkerId
+              {/* <FormInputWorkerId
                 icon="log-in"
-                placeholder="ID"
-                ref={idRef}
+                placeholder="(xx)x-xxxx-xxxx"
+                // ref={idRef}
                 returnKeyType="send"
                 onSubmitEditing={handleSubmit}
-                value={workerId}
-                onChangeText={setWorkerId}
+                value={workerPhoneNumber}
+                onChangeText={setWorkerPhoneNumber}
+              /> */}
+               <PhoneMask
+                type={'cel-phone'}
+                options={
+                  {
+                    maskType: 'BRL',
+                    withDDD: true,
+                    dddMask: '(99) ',
+                  }
+                }
+                icon="log-in"
+                placeholder="Número de Whatsapp"
+                // ref={idRef}
+                returnKeyType="send"
+                onSubmitEditing={handleSubmit}
+                value={workerPhoneNumber}
+                onChangeText={
+                  setWorkerPhoneNumber
+                }
+                placeholderTextColor={'#999'}
+
               />
               <FormInputWorkerPassword
                 icon="unlock"
                 placeholder="Senha"
+                returnKeyType="send"
+                onSubmitEditing={handleSubmit}
+                value={workerPassword}
+                onChangeText={setWorkerPassword}
+                placeholderTextColor={'#999'}
               />
+
               <SubmitButton loading={loading} onPress={handleSubmit}>
                 <ButtonText>Entrar</ButtonText>
               </SubmitButton>

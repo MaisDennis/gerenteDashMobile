@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
+import { TextInputMask as InputMask } from 'react-native-masked-text'
 // -----------------------------------------------------------------------------
 import Input from '~/components/Input';
 import Button from '~/components/Button';
@@ -77,6 +78,15 @@ export const FormInputWorkerId = styled(Input)`
   padding-left: 10px;
 `;
 
+export const PhoneMask = styled(InputMask)`
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+  margin: 4px auto;
+  width: 90%;
+  padding-left: 10px;
+}
+`
+
 export const FormInputUserPassword = styled(Input)`
   background: rgba(0,0,0,0.3);
   margin: 4px auto;
@@ -90,6 +100,8 @@ export const FormInputWorkerPassword = styled(Input)`
   width: 90%;
   padding-left: 10px;
 `;
+
+
 
 export const SubmitButton = styled(Button)`
   margin: 14px auto;

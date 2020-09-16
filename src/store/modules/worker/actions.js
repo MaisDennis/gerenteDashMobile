@@ -1,16 +1,16 @@
 import React from 'react';
 
-export function signInRequest(workerId) {
+export function signInRequest(workerPhoneNumber, workerPassword) {
   return {
     type: '@worker/SIGN_IN_REQUEST',
-    payload: { workerId },
+    payload: { workerPhoneNumber, workerPassword },
   };
 }
 
-export function signInSuccess(workerId, workerData) {
+export function signInSuccess(workerPhoneNumber, workerData) {
   return {
     type: '@worker/SIGN_IN_SUCCESS',
-    payload: { workerId, workerData },
+    payload: { workerPhoneNumber, workerData },
   };
 };
 

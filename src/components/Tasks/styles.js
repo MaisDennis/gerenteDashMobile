@@ -14,7 +14,7 @@ export const Container = styled.View`
 `;
 
 export const TaskIcon = styled(Icon)`
-color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+color: #222;
 font-size: 20px;
 `;
 
@@ -27,7 +27,7 @@ export const TitleView = styled.View`
 export const NameText = styled.Text`
   font-weight: bold;
   font-size: 16px;
-  color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+  color: #222;
   margin: auto 4px;
 `;
 
@@ -44,7 +44,7 @@ export const DescriptionBorderView = styled.View`
   justify-content: space-between;
   flex-direction: column;
   border: 2px;
-  border-color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+  border-color: #bb9a39;
   align-items: center;
   width: 90%;
   padding: 4px;
@@ -86,6 +86,22 @@ export const Time = styled.Text`
   font-size: 14px;
   margin-top: 2px;
 `;
+export const StartTime = styled.Text`
+  background: #F5F5F5;
+  border-radius: 16px;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 2px;
+`;
+export const DueTime = styled.Text`
+  background: ${props => props.pastDueDate == true ? '#ed7777' : '#daf1e0'};
+  border-radius: 16px;
+  padding: 2px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 2px;
+`;
 
 export const ButtonView = styled.View`
   text-align: center;
@@ -98,6 +114,10 @@ export const HrLine = styled.View`
 width: 90%;
 border: 0.5px #dddcda;
 margin: 14px auto;
+`;
+
+export const MessageButton = styled(Button)`
+background: #bb9a39;
 `;
 
 export const FinishedButton = styled(Button)`

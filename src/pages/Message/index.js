@@ -1,20 +1,24 @@
 import React, { useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { View } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import whatsappIcon from '../../assets/whatsapplogo3.png';
+
 // -----------------------------------------------------------------------------
 import api from '~/services/api';
 import {
   Container, Form, TitleView, TaskName, TaskDescriptionView,
-  TaskDescriptionText, FormInput, SubmitButton
+  TaskDescriptionText, FormInput, SubmitButton, SubmitButtonText, WhatsappButton,
+  WhatsappImage, WhatsappLabelText
 } from './styles';
 // -----------------------------------------------------------------------------
 export default function Message({ navigation, route }) {
   const idRef = useRef();
   const [content, setContent] = useState('');
-  const id = useSelector(state => state.worker.workerId);
+  const id = useSelector(state => state.worker.workerData.id);
   const worker_name = useSelector( state => state.worker.workerData.name)
-  const { task_id, user_id, taskName, taskDescription } = route.params;
+  const userId = useSelector( state => state.worker.workerData.user_id)
+  const { task_id, user_id, taskName, taskDescription, taskUserPhonenumber } = route.params;
 
   async function handleMessage() {
     await api.post(`messages/mobile/${task_id}`, {
@@ -24,6 +28,11 @@ export default function Message({ navigation, route }) {
       message_worker: content,
     });
     navigation.navigate('Dashboard');
+  }
+
+  function handleLinkToWhatsapp() {
+    console.tron.log(taskUserPhonenumber)
+    Linking.openURL(`whatsapp://send?phone=${taskUserPhonenumber}`)
   }
   // -----------------------------------------------------------------------------
   return (
@@ -52,7 +61,14 @@ export default function Message({ navigation, route }) {
             value={content}
             onChangeText={setContent}
           />
-          <SubmitButton onPress={handleMessage}><Icon name='mail' size={20} color='#fff'></Icon></SubmitButton>
+          <SubmitButton onPress={handleMessage}>
+            <SubmitButtonText>Enviar</SubmitButtonText>
+            {/* <Icon name='mail' size={20} color='#fff'/> */}
+          </SubmitButton>
+          <WhatsappLabelText>Ou entrar em contato pelo Whatsapp:</WhatsappLabelText>
+          <WhatsappButton onPress={handleLinkToWhatsapp}>
+            <WhatsappImage source={whatsappIcon} color='#fff'/>
+          </WhatsappButton>
         </Form>
       </Container>
     </>

@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
-import { TextInput } from 'react-native';
+import { TextInput, Text, Image } from 'react-native';
 import Button from '~/components/Button';
+import { RectButton } from 'react-native-gesture-handler';
 
 export const Container = styled.SafeAreaView`
   top: 50px;
@@ -63,7 +64,7 @@ export const TaskDescriptionText = styled.Text`
 export const FormInput = styled(TextInput)`
   top: 0;
   margin: 0 auto;
-  height: 100px;
+  height: 290px;
   width: 90%;
   text-align: justify;
   padding: 8px;
@@ -76,6 +77,39 @@ export const FormInput = styled(TextInput)`
 export const SubmitButton = styled(Button)`
   margin-top: 15px;
   background: #58595B;
-  width: 150px;
+  width: 90%;
 `;
+
+export const WhatsappButton = styled(Button)`
+  margin: 4px auto 10px;
+  background: #00ff00;
+  width: 90%;
+`;
+
+export const SubmitButtonText = styled(Text)`
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  /* background: #beef69; */
+  width: 90%;
+`;
+
+export const WhatsappLabelText = styled(Text)`
+  color: #222;
+  font-weight: normal;
+  font-size: 14px;
+  margin: 15px auto 0;
+  text-align: center;
+  line-height: 20px;
+  /* background: #beef69; */
+  width: 90%;
+`;
+
+export const WhatsappImage = styled(Image)`
+height: 20px;
+width: 20px;
+`;
+
 

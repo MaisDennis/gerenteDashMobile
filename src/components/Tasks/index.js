@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 import {
   Container, TitleView, TaskIcon, NameText, DescriptionView, DescriptionBorderView, DescriptionSpan,
-  DatesAndButtonView, TagView, Label, Time, ButtonView, HrLine, FinishedButton
+  DatesAndButtonView, TagView, Label, Time, StartTime, DueTime,  ButtonView, HrLine, MessageButton, FinishedButton
 } from './styles';
 // -----------------------------------------------------------------------------
 const formattedDate = fdate =>
@@ -26,7 +26,7 @@ export default function Task({ data, navigation }) {
 
   function handleMessage() {
     navigation.navigate('Message', {
-      task_id: data.id, user_id: data.user_id, taskName: data.name, taskDescription: data.description
+      task_id: data.id, user_id: data.user_id, taskName: data.name, taskDescription: data.description, taskUserPhonenumber: data.userphonenumber
     });
   }
 
@@ -63,8 +63,12 @@ export default function Task({ data, navigation }) {
                     <Time style={{ color: '#999'}}>{formattedDate(data.start_date)}</Time>
                 </TagView>
                 <TagView>
-                  <Label>Entrega</Label>
+                  <Label>Prazo</Label>
                     <Time style={{ color: '#999'}}>{formattedDate(data.due_date)}</Time>
+                </TagView>
+                <TagView>
+                  <Label>Entregue</Label>
+                    <Time style={{ color: '#999'}}>{formattedDate(data.end_date)}</Time>
                 </TagView>
               </DatesAndButtonView>
               <HrLine/>
@@ -92,18 +96,18 @@ export default function Task({ data, navigation }) {
               <DatesAndButtonView>
                 <TagView>
                   <Label>Início</Label>
-                    <Time pastDueDate={pastDueDate()}>{formattedDate(data.start_date)}</Time>
+                    <StartTime pastDueDate={pastDueDate()}>{formattedDate(data.start_date)}</StartTime>
                 </TagView>
                 <TagView>
-                  <Label>Entrega</Label>
-                    <Time pastDueDate={pastDueDate()}>{formattedDate(data.due_date)}</Time>
+                  <Label>Prazo</Label>
+                    <DueTime pastDueDate={pastDueDate()}>{formattedDate(data.due_date)}</DueTime>
                 </TagView>
               </DatesAndButtonView>
               <HrLine/>
               <DatesAndButtonView>
                 <ButtonView>
                   <TouchableOpacity onPress={handleMessage}>
-                    <Button><Icon name="message-square" size={20} color="#fff" /></Button>
+                    <MessageButton><Icon name="message-square" size={20} color="#fff" /></MessageButton>
                   </TouchableOpacity>
                 </ButtonView>
                 <ButtonView>
