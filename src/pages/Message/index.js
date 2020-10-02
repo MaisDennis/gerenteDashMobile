@@ -9,7 +9,7 @@ import api from '~/services/api';
 import {
   Container, Form, TitleView, TaskName, TaskDescriptionView,
   TaskDescriptionText, FormInput, SubmitButton, SubmitButtonText, WhatsappButton,
-  WhatsappImage, WhatsappLabelText
+  WhatsappImage, WhatsappLabelText, List
 } from './styles';
 // -----------------------------------------------------------------------------
 export default function Message({ navigation, route }) {
@@ -31,17 +31,21 @@ export default function Message({ navigation, route }) {
   }
 
   function handleLinkToWhatsapp() {
-    console.tron.log(taskUserPhonenumber)
-    Linking.openURL(`whatsapp://send?phone=${taskUserPhonenumber}`)
+    // console.tron.log(taskUserPhonenumber)
+    content
+    ? Linking.openURL(`whatsapp://send?text=${content}&phone=${taskUserPhonenumber}`)
+    : Linking.openURL(`whatsapp://send?phone=${taskUserPhonenumber}`)
   }
   // -----------------------------------------------------------------------------
   return (
     <>
       <Container>
+
         <TitleView>
           <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
           <TaskName>{taskName}</TaskName>
         </TitleView>
+
         <Form>
           <TaskDescriptionView>
             <TaskDescriptionText>
@@ -61,6 +65,7 @@ export default function Message({ navigation, route }) {
             value={content}
             onChangeText={setContent}
           />
+
           <SubmitButton onPress={handleMessage}>
             <SubmitButtonText>Enviar</SubmitButtonText>
             {/* <Icon name='mail' size={20} color='#fff'/> */}
@@ -69,7 +74,9 @@ export default function Message({ navigation, route }) {
           <WhatsappButton onPress={handleLinkToWhatsapp}>
             <WhatsappImage source={whatsappIcon} color='#fff'/>
           </WhatsappButton>
+
         </Form>
+
       </Container>
     </>
   );

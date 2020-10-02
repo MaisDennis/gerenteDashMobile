@@ -6,14 +6,15 @@ import { RectButton } from 'react-native-gesture-handler';
 export const Container = styled.SafeAreaView`
   top: 50px;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
   border-radius: 4px;
   background: #fff;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 4px;
+  height: auto;
   /* background: #ff5f; */
 `;
 
@@ -64,7 +65,7 @@ export const TaskDescriptionText = styled.Text`
 export const FormInput = styled(TextInput)`
   top: 0;
   margin: 0 auto;
-  height: 290px;
+  height: 150px;
   width: 90%;
   text-align: justify;
   padding: 8px;
@@ -110,6 +111,13 @@ export const WhatsappLabelText = styled(Text)`
 export const WhatsappImage = styled(Image)`
 height: 20px;
 width: 20px;
+`;
+
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { padding: 30 },
+})`
+  height: 100%;
 `;
 
 
