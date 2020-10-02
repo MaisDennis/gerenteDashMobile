@@ -62,8 +62,8 @@ export default function Confirm({ route }) {
           ref={camera}
           style={{
 
-            height: 400,
-            width: 400,
+            height: 280,
+            width: 325,
             marginTop: 20,
             marginBottom: 20,
             marginLeft: 0,

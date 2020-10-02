@@ -7,14 +7,14 @@ export const Container = styled.SafeAreaView`
 export const Header = styled.View`
   justify-content: space-between;
   flex-direction: column;
-  margin: 30px 30px 0px 30px;
+  margin: 5px 30px 0px 30px;
 `;
 
 export const TopHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin: 5px 5px 0 5px;
+  margin: 0;
   /* background: #F5F; */
 `;
 
@@ -27,7 +27,7 @@ export const TagView = styled.View`
 export const Span1 = styled.Text`
   font-weight: bold;
   font-size: 14px;
-  color: #888;
+  /* color: #888; */
 `;
 
 export const TitleWorkerName = styled.Text`
@@ -41,11 +41,11 @@ export const BottomHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 25px;
+  margin-top: 12px;
 `;
 
 export const TitleTask = styled.Text`
-  font-size: 24px;
+  font-size: 21px;
   color: #222;
   font-weight: bold;
 `;
@@ -53,7 +53,7 @@ export const TitleTask = styled.Text`
 export const Div4 = styled.View`
   display: flex;
   flex-direction: row;
-  margin: auto 5px;
+  margin: auto ;
 `;
 
 export const List = styled.FlatList.attrs({

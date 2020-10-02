@@ -7,6 +7,7 @@ export const Container = styled.SafeAreaView`
   margin: 0 auto;
   /* background: #f5f5; */
   height: auto;
+  width: 90%;
   /* margin-bottom: 14px; */
   border-radius: 4px;
   background: #fff;
@@ -20,7 +21,7 @@ export const Container = styled.SafeAreaView`
 export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
-  margin: 14px;
+  margin-top: 14px;
   /* background: #ff5f; */
 `;
 
@@ -34,5 +35,5 @@ export const TaskName = styled.Text`
 export const CameraButton = styled(Button)`
   margin: 0px auto 10px;
   background: #58595B;
-  width: 150px;
+  width: 90%;
 `;
