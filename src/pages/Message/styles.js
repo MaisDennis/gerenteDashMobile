@@ -41,7 +41,10 @@ export const Container = styled.SafeAreaView`
 //   background: #ff5f;
 // `;
 
-export const StyledKeyboardAvoiding = styled(KeyboardAvoidingView)`
+export const StyledKeyboardAvoiding = styled.KeyboardAvoidingView.attrs({
+  enabled: Platform.OS === 'ios',
+  behavior: 'padding',
+})`
   /* background: #58595B; */
   width: 100%;
 `;

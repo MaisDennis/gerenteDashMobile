@@ -33,8 +33,8 @@ export default function Message({ navigation, route }) {
   function handleLinkToWhatsapp() {
     // console.tron.log(taskUserPhonenumber)
     content
-    ? Linking.openURL(`whatsapp://send?text=${content}&phone=${taskUserPhonenumber}`)
-    : Linking.openURL(`whatsapp://send?phone=${taskUserPhonenumber}`)
+    ? Linking.openURL(`whatsapp://send?text=${content}&phone=55${taskUserPhonenumber}`)
+    : Linking.openURL(`whatsapp://send?phone=55${taskUserPhonenumber}`)
   }
   // -----------------------------------------------------------------------------
   return (

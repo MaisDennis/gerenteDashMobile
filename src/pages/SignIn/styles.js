@@ -19,13 +19,11 @@ export const ImageLogo = styled.Image`
   width: 150px;
   height: 150px;
   border-radius: 24px;
-  /* margin: 24px; */
 `;
 
 export const ImageGodtaskerFont = styled.Image`
   width: 240px;
   height: 80px;
-
   margin: 24px;
 `;
 
@@ -85,8 +83,7 @@ export const PhoneMask = styled(InputMask)`
   width: 90%;
   padding-left: 10px;
   height: 46px;
-}
-`
+`;
 
 export const FormInputUserPassword = styled(Input)`
   background: rgba(0,0,0,0.3);
