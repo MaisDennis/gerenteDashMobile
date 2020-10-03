@@ -1,40 +1,70 @@
 import styled from 'styled-components/native';
-import { TextInput, Text, Image } from 'react-native';
+import { TextInput, Text, Image, KeyboardAvoidingView } from 'react-native';
 import Button from '~/components/Button';
 import { RectButton } from 'react-native-gesture-handler';
 
+// export const Container = styled.SafeAreaView`
+//   top: 5px;
+//   margin: 0 auto;
+//   width: 90%;
+//   border-radius: 4px;
+//   background: #fff;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: space-between;
+//   padding: 2px;
+//   height: auto;
+//   /* background: #ff5f; */
+// `;
+
 export const Container = styled.SafeAreaView`
-  top: 50px;
+  top: 5px;
   margin: 0 auto;
   width: 90%;
-  border-radius: 4px;
   background: #fff;
-  /* display: flex; */
-  flex-direction: column;
+  flex: 1;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 4px;
+  padding: 2px;
   height: auto;
   /* background: #ff5f; */
+ `;
+
+// export const Container = styled.KeyboardAvoidingView.attrs({
+//   enabled: Platform.OS === 'ios',
+//   behavior: 'padding',
+// })`
+//   flex: 1;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 0;
+//   background: #ff5f;
+// `;
+
+export const StyledKeyboardAvoiding = styled(KeyboardAvoidingView)`
+  /* background: #58595B; */
+  width: 100%;
 `;
 
 export const Form = styled.View`
   top: 0;
-  margin: 0 auto;
   width: 100%;
+  margin: 0;
   /* background: #ff5f; */
 `;
 
 export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
-  margin: 14px;
+  margin: 14px auto;
+  /* background: #ff5f; */
 `;
 
 export const TaskName = styled.Text`
   font-weight: bold;
   font-size: 16px;
   margin: auto 4px;
+  /* background: #ff5f; */
 `;
 
 export const TaskDescriptionView = styled.View`
@@ -50,6 +80,7 @@ export const TaskDescriptionView = styled.View`
   border-radius: 4px;
   align-self: center;
   margin-bottom: 14px;
+  /* background: #ff5f; */
 `;
 
 export const TaskDescriptionText = styled.Text`
@@ -60,6 +91,7 @@ export const TaskDescriptionText = styled.Text`
   text-align: justify;
   line-height: 20px;
   margin: 4px;
+  /* background: #ff5f; */
 `;
 
 export const FormInput = styled(TextInput)`
@@ -73,6 +105,7 @@ export const FormInput = styled(TextInput)`
   border: 1px solid #DDDDDD;
   border-radius: 4px;
   color: #222;
+  /* background: #ff5f; */
 `;
 
 export const SubmitButton = styled(Button)`
@@ -119,5 +152,7 @@ export const List = styled.FlatList.attrs({
 })`
   height: 100%;
 `;
+
+
 
 

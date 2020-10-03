@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, KeyboardAvoidingView } from 'react-native';
 import styled from 'styled-components/native';
 import { TextInputMask as InputMask } from 'react-native-masked-text'
 // -----------------------------------------------------------------------------
@@ -84,6 +84,7 @@ export const PhoneMask = styled(InputMask)`
   margin: 4px auto;
   width: 90%;
   padding-left: 10px;
+  height: 46px;
 }
 `
 
@@ -101,8 +102,6 @@ export const FormInputWorkerPassword = styled(Input)`
   padding-left: 10px;
 `;
 
-
-
 export const SubmitButton = styled(Button)`
   margin: 14px auto;
 `;
@@ -112,4 +111,9 @@ font-size: 16px;
 font-weight: bold;
 /* background: #999; */
 color: #fff;
+`;
+
+export const StyledKeyboardAvoiding = styled(KeyboardAvoidingView)`
+  /* background: #58595B; */
+  width: 100%;
 `;
