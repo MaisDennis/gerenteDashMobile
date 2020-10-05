@@ -9,7 +9,7 @@ import api from '~/services/api';
 import {
   Container, Form, TitleView, TaskName, TaskDescriptionView,
   TaskDescriptionText, FormInput, SubmitButton, SubmitButtonText, WhatsappButton,
-  WhatsappImage, WhatsappLabelText, List, StyledKeyboardAvoiding
+  WhatsappImage, WhatsappLabelText, List,
 } from './styles';
 // -----------------------------------------------------------------------------
 export default function Message({ navigation, route }) {
@@ -40,9 +40,7 @@ export default function Message({ navigation, route }) {
   return (
     <>
       <Container>
-        <StyledKeyboardAvoiding
-          behavior="padding"
-        >
+
           <TitleView>
             <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
             <TaskName>{taskName}</TaskName>
@@ -76,7 +74,7 @@ export default function Message({ navigation, route }) {
               <WhatsappImage source={whatsappIcon} color='#fff'/>
             </WhatsappButton>
           </Form>
-        </StyledKeyboardAvoiding>
+
       </Container>
     </>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import { TextInput, Text, Image, KeyboardAvoidingView } from 'react-native';
+import { TextInput, Text, Image, KeyboardAvoidingView, ScrollView } from 'react-native';
 import Button from '~/components/Button';
 import { RectButton } from 'react-native-gesture-handler';
 
@@ -17,33 +17,35 @@ import { RectButton } from 'react-native-gesture-handler';
 //   /* background: #ff5f; */
 // `;
 
-export const Container = styled.SafeAreaView`
+// export const Container = styled.SafeAreaView`
+//   top: 5px;
+//   margin: 0 auto;
+//   width: 90%;
+//   background: #fff;
+//   flex: 1;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 2px;
+//   height: auto;
+//   /* background: #ff5f; */
+//  `;
+
+export const Container = styled.ScrollView.attrs({
+  enabled: Platform.OS === 'ios',
+  behavior: 'padding',
+})`
   top: 5px;
   margin: 0 auto;
   width: 90%;
   background: #fff;
   flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-  height: auto;
+  padding: 0;
   /* background: #ff5f; */
- `;
-
-// export const Container = styled.KeyboardAvoidingView.attrs({
-//   enabled: Platform.OS === 'ios',
-//   behavior: 'padding',
-// })`
-//   flex: 1;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 0;
-//   background: #ff5f;
-// `;
+`;
 
 export const StyledKeyboardAvoiding = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'padding',
+  behavior: 'position',
 })`
   /* background: #58595B; */
   width: 100%;

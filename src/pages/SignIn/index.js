@@ -44,7 +44,10 @@ export default function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
-        <ImageLogo source={logo} />
+        {logo
+          ? <ImageLogo source={logo} />
+          : <Title>ios sem imagem</Title>
+        }
         <ImageGodtaskerFont source={godtaskerFont} />
         <Div1>
           <Div2>

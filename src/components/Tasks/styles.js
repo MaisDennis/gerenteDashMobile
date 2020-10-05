@@ -96,7 +96,7 @@ export const StartTime = styled.Text`
 `;
 export const DueTime = styled.Text`
   background: ${props => props.pastDueDate == true ? '#ed7777' : '#daf1e0'};
-  border-radius: 16px;
+  /* border-radius: 16px; */
   padding: 2px;
   font-weight: bold;
   font-size: 14px;

@@ -71,7 +71,7 @@ export default function Confirm({ route }) {
             // height: 200,
             // width: 350,
           }}
-          type={RNCamera.Constants.Type.front}
+          type={RNCamera.Constants.Type.back}
           flashMode={RNCamera.Constants.FlashMode.on}
           captureAudio={false}
         />
