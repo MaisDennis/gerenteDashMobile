@@ -4,11 +4,11 @@ import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
 import { Container, TitleView, TaskName, CameraButton, CameraView } from './styles';
 import api from '~/services/api';
+import { updateImageRequest } from '~/store/modules/image/actions';
 // -----------------------------------------------------------------------------
 export default function Confirm({ route }) {
   const { task_id, taskName } = route.params;
   const camera = useRef(null);
-  const [photo, setPhoto] = useState();
 
   async function takePicture() {
     if (camera) {
@@ -20,30 +20,36 @@ export default function Confirm({ route }) {
       };
       const data = await camera.current.takePictureAsync(options);
 
-      setPhoto({
-        uri: data.uri,
-        type: 'image/*',
-        name: `signature_${task_id}_${data.uri}.jpg`,
-      });
+      //************* */
+      // console.tron.log(data);
+      // const formData = new FormData();
 
-
-      console.tron.log(data);
+      // formData.append('signature', {
+      //   // uri: data.uri,
+      //   // // name: `Signature${data.uri}.jpg`,
+      //   // type: 'image/jpg',
+      //   // name: `${data.uri}_${'1'}.jpg`,
+      //   uri: data.uri,
+      //   type: 'image/*',
+      //   name: `signature_${task_id}.jpg`,
+      // });
 
       const formData = new FormData();
-
-      formData.append('signature', {
-        // uri: data.uri,
-        // // name: `Signature${data.uri}.jpg`,
-        // type: 'image/jpg',
-        // name: `${data.uri}_${'1'}.jpg`,
+      formData.append('signatureImage', {
         uri: data.uri,
-        type: 'image/*',
+        type: "image/jpg",
         name: `signature_${task_id}.jpg`,
       });
 
-      const response = await api.post('signatures', formData);
+      const response = await api.post('signatures', formData, {
+        headers: {
+          'accept': 'application/json',
+          'Accept-Language': 'en-US,en;q=0.8',
+          'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+        }
+      });
 
-      const signature_id = response.data.id;
+      const { signature_id } = response.data;
 
       await api.put(`tasks/confirm/${task_id}`, {
         signature_id,
