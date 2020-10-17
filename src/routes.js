@@ -6,12 +6,14 @@ import { createStackNavigator, HeaderStyleInterpolators, TransitionPresets } fro
 import { Text, Image } from 'react-native';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import Whatsapp from '~/assets/whatsapp.png'
 // -----------------------------------------------------------------------------
 import SignIn from './pages/SignIn';
 // import SignUp from './pages/SignUp';
 import Message from './pages/Message';
 import Confirm from './pages/Confirm';
 import TabRoutes from '~/components/TabRoutes';
+import HeaderView from './components/HeaderView'
 // -----------------------------------------------------------------------------
 const Stack = createStackNavigator();
 // -----------------------------------------------------------------------------
@@ -22,36 +24,49 @@ export default function App() {
   fdate == null
     ? '-'
     : format(fdate, "dd 'de' MMMM',' yyyy", { locale: pt });
-const todayDate = formattedDate(new Date())
+  const todayDate = formattedDate(new Date())
   // -----------------------------------------------------------------------------
+
+  function LogoTitle() {
+    return (
+      <Image
+        style={{ width: 50, height: 50 }}
+        source={Whatsapp}
+      />
+    );
+  }
   return (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName={signed === true ? 'TabRoutes' : 'SignIn'}
         screenOptions={{
           headerStyle: { backgroundColor: '#222' },
-          headerTintColor: '#ffffff',
+          headerTintColor: '#fff',
           headerTitleStyle: { fontWeight: 'bold' },
           headerTitleAlign: "center",
           ...TransitionPresets.ModalTransition,
         }}
       >
         <Stack.Screen
-          name="TabRoutes"
+          name="Home"
           component={TabRoutes}
           options={{
-            headerTitle: (
-              <>
-                <Text>
-                {todayDate}
-                </Text>
-              </>
-            ),
+            // headerTitle: (
+            //   <>
+            //     <Text>
+            //     {todayDate}
+            //     </Text>
+            //   </>
+            // ),
+            headerTitle: (props => (
+            <HeaderView/>
+            )),
             headerStyleInterpolator: HeaderStyleInterpolators.forFade,
-            headerShown: true,
+            headerTintColor: '#fff',
             headerBackTitleVisible: true,
             headerStyle: {
               backgroundColor: '#222',
+              height: 90,
             },
           }}
         />
@@ -61,22 +76,19 @@ const todayDate = formattedDate(new Date())
             headerShown: false,
           }}
         />
-        {/* <Stack.Screen name="SignUp" component={SignUp}
-          options={{
-            title: 'Cadastrar',
-          }}
-        /> */}
-         <Stack.Screen name="Message" component={Message}
+        <Stack.Screen name="Message" component={Message}
           options={{
             title: 'Reportar',
             headerShown: true,
-            headerBackTitleVisible: false,
+            headerBackTitleVisible: true,
             headerTintColor: '#fff',
             headerTitleStyle: {
-            fontWeight: 'bold',
+              fontWeight: 'normal',
+              fontSize: 24,
             },
             headerStyle: {
               backgroundColor: '#222',
+              height: 60,
             },
           }}
         />
@@ -84,13 +96,15 @@ const todayDate = formattedDate(new Date())
           options={{
             title: 'Confirmar',
             headerShown: true,
-            headerBackTitleVisible: false,
+            headerBackTitleVisible: true,
             headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'bold',
+              fontWeight: 'normal',
+              fontSize: 24,
             },
             headerStyle: {
               backgroundColor: '#222',
+              height: 60,
             },
           }}
         />
