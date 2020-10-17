@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
+import { Alert } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
-import { Container, TitleView, TaskName, CameraButton, CameraView } from './styles';
+import { Container, TitleView, TaskName, CameraButton, CameraView, StyledScrollView } from './styles';
 import api from '~/services/api';
 import { updateImageRequest } from '~/store/modules/image/actions';
 // -----------------------------------------------------------------------------
@@ -41,36 +42,66 @@ export default function Confirm({ route }) {
         name: `signature_${task_id}.jpg`,
       });
 
-      const response = await api.post('signatures', formData, {
-        headers: {
-          'accept': 'application/json',
-          'Accept-Language': 'en-US,en;q=0.8',
-          'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-        }
-      });
+      try {
+        const response = await api.post('signatures', formData, {
+          headers: {
+            'accept': 'application/json',
+            'Accept-Language': 'en-US,en;q=0.8',
+            'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+          }
+        });
 
-      const { signature_id } = response.data;
+        const { signature_id } = response.data;
 
-      await api.put(`tasks/confirm/${task_id}`, {
-        signature_id,
-      });
+        await api.put(`tasks/confirm/${task_id}`, {
+          signature_id,
+        });
+
+        Alert.alert(
+          'Confirmação',
+          'Enviada com sucesso!',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+      }
+      catch {
+        Alert.alert(
+          'Confirmação',
+          'Não foi possível enviar a confirmação.',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+      }
+
     }
   }
   // -----------------------------------------------------------------------------
   return (
     <>
+    <StyledScrollView>
       <Container>
         <TitleView>
           <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
           <TaskName>{taskName}</TaskName>
         </TitleView>
+
         <RNCamera
           ref={camera}
           style={{
-
-            height: 280,
+            top: 40,
+            height: 360,
             width: 325,
-            marginTop: 20,
+            marginTop: 0,
             marginBottom: 20,
             marginLeft: 0,
             marginRight: 0,
@@ -81,8 +112,10 @@ export default function Confirm({ route }) {
           flashMode={RNCamera.Constants.FlashMode.on}
           captureAudio={false}
         />
+
         <CameraButton onPress={() => takePicture()}><Icon name='camera' size={20} color='#fff'/></CameraButton>
       </Container>
+      </StyledScrollView>
     </>
   );
 }

@@ -19,6 +19,7 @@ export default function Dashboard({ navigation }) {
       params: { test: name },
     });
     setTasks(response.data);
+
   }
   // -----------------------------------------------------------------------------
   return (

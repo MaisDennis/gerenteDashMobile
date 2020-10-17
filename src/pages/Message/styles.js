@@ -31,8 +31,6 @@ import { RectButton } from 'react-native-gesture-handler';
 //  `;
 
 export const Container = styled.ScrollView.attrs({
-  enabled: Platform.OS === 'ios',
-  behavior: 'padding',
 })`
   top: 5px;
   margin: 0 auto;

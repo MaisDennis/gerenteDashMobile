@@ -8,13 +8,14 @@ import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 import {
   Container, TitleView, TaskIcon, NameText, DescriptionView, DescriptionBorderView, DescriptionSpan,
-  DatesAndButtonView, TagView, Label, Time, StartTime, DueTime,  ButtonView, HrLine, MessageButton, FinishedButton
+  DatesAndButtonView, TagView, Label, Time, StartTime, DueTime,  ButtonView, HrLine, MessageButton,
+  FinishedButton, ConfirmButton, UserView
 } from './styles';
 // -----------------------------------------------------------------------------
 const formattedDate = fdate =>
   fdate == null
     ? '-'
-    : format(parseISO(fdate), "dd '/' MMM '/' yyyy", { locale: pt });
+    : format(parseISO(fdate), "dd'-'MMM'-'yyyy", { locale: pt });
 
 export default function Task({ data, navigation }) {
   const today = new Date();
@@ -58,6 +59,13 @@ export default function Task({ data, navigation }) {
                 </DescriptionBorderView>
               </DescriptionView>
               <DatesAndButtonView>
+              <UserView>
+                  <Label>Delegado por:</Label>
+                  <Time style={{ color: '#999'}}>{data.user.name}</Time>
+                </UserView>
+              </DatesAndButtonView>
+
+              <DatesAndButtonView>
                 <TagView>
                   <Label>Início</Label>
                     <Time style={{ color: '#999'}}>{formattedDate(data.start_date)}</Time>
@@ -94,6 +102,12 @@ export default function Task({ data, navigation }) {
                 </DescriptionBorderView>
               </DescriptionView>
               <DatesAndButtonView>
+              <UserView>
+                  <Label>Delegado por:</Label>
+                  <StartTime>{data.user.name}</StartTime>
+                </UserView>
+              </DatesAndButtonView>
+              <DatesAndButtonView>
                 <TagView>
                   <Label>Início</Label>
                     <StartTime pastDueDate={pastDueDate()}>{formattedDate(data.start_date)}</StartTime>
@@ -112,7 +126,7 @@ export default function Task({ data, navigation }) {
                 </ButtonView>
                 <ButtonView>
                   <TouchableOpacity onPress={handleConfirm}>
-                    <Button><Icon name="check-circle" size={20} color="#fff" /></Button>
+                    <ConfirmButton pastDueDate={pastDueDate()}><Icon name="check-circle" size={20} color="#fff" /></ConfirmButton>
                   </TouchableOpacity>
                 </ButtonView>
               </DatesAndButtonView>

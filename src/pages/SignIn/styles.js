@@ -7,7 +7,7 @@ import Button from '~/components/Button';
 // -----------------------------------------------------------------------------
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'padding',
+  behavior: 'position',
 })`
   flex: 1;
   justify-content: center;
@@ -15,16 +15,22 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 0 30px;
 `;
 
+export const StyledScrollView = styled.ScrollView`
+/* background: #F5F; */
+`;
+
 export const ImageLogo = styled.Image`
   width: 150px;
   height: 150px;
   border-radius: 24px;
+  margin: 120px auto 6px;
 `;
 
 export const ImageGodtaskerFont = styled.Image`
   width: 240px;
   height: 80px;
-  margin: 24px;
+  margin: auto auto 24px;
+
 `;
 
 export const Title = styled.Text`

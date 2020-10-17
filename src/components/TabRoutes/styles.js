@@ -1,21 +1,36 @@
 import styled from 'styled-components/native';
+import Button from '~/components/Button';
 
 export const Container = styled.SafeAreaView`
   height: 100%;
 `;
 
 export const Header = styled.View`
-  justify-content: space-between;
-  flex-direction: column;
-  margin: 5px 30px 0px 30px;
+  margin: 10px 30px 0px 30px;
+  /* background: #F5F; */
 `;
 
 export const TopHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin: 0;
+  margin-bottom: 10px;
   /* background: #F5F; */
+`;
+
+export const ExitButton = styled(Button)`
+background: #58595B;
+color: #fff;
+width: 44px;
+height: 44px;
+border-radius: 44px;
+margin-top: 4px;
+`;
+
+export const ExitButtonText = styled.Text`
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
 `;
 
 export const TagView = styled.View`
@@ -27,11 +42,19 @@ export const TagView = styled.View`
 export const Span1 = styled.Text`
   font-weight: bold;
   font-size: 14px;
+  /* margin-bottom: 5px; */
+  /* color: #888; */
+`;
+
+export const Span2 = styled.Text`
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
   /* color: #888; */
 `;
 
 export const TitleWorkerName = styled.Text`
-  font-size: 24px;
+  font-size: 21px;
   color: #222;
   font-weight: bold;
   align-self: center;
@@ -41,7 +64,7 @@ export const BottomHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 12px;
+  margin-top: 10px;
 `;
 
 export const TitleTask = styled.Text`
@@ -50,15 +73,15 @@ export const TitleTask = styled.Text`
   font-weight: bold;
 `;
 
-export const Div4 = styled.View`
-  display: flex;
-  flex-direction: row;
-  margin: auto ;
-`;
+// export const Div4 = styled.View`
+//   display: flex;
+//   flex-direction: row;
+//   margin: auto ;
+// `;
 
-export const List = styled.FlatList.attrs({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: { padding: 30 },
-})`
-  height: 100%;
-`;
+// export const List = styled.FlatList.attrs({
+//   showsVerticalScrollIndicator: false,
+//   contentContainerStyle: { padding: 30 },
+// })`
+//   height: 100%;
+// `;

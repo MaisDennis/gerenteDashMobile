@@ -13,7 +13,7 @@ export const Title3 = styled.Text`
 
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
-  contentContainerStyle: { padding: 30 },
+  contentContainerStyle: { padding: 5 },
 })`
   height: 100%;
 `;

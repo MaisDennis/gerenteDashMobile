@@ -7,7 +7,8 @@ import Dashboard from '~/pages/Dashboard';
 import DashboardFinishedTasks from '~/pages/DashboardFinishedTasks';
 import {
   Header, TopHeaderView, TagView,
-  Span1, TitleWorkerName, TitleTask, BottomHeaderView,
+  Span1, Span2, TitleWorkerName, TitleTask,
+  BottomHeaderView, ExitButton, ExitButtonText
 } from './styles';
 import { signOut } from '~/store/modules/worker/actions';
 // -----------------------------------------------------------------------------
@@ -31,15 +32,19 @@ export default function TabRoutes({ navigation }) {
       <Header>
         <TopHeaderView>
           <TagView>
-            <Span1>Bem vindo de volta,</Span1>
+            <Span1>Atenção,</Span1>
             <TitleWorkerName>{worker.name}</TitleWorkerName>
           </TagView>
           <TagView>
-            <Icon name='disc' size={20} color='#f64C75' onPress={handleLogout}/>
+            <ExitButton>
+              <ExitButtonText onPress={handleLogout}>Sair</ExitButtonText>
+              {/* <Icon name='disc' size={20} color='#f64C75' onPress={handleLogout}/> */}
+            </ExitButton>
+
           </TagView>
         </TopHeaderView>
         <BottomHeaderView>
-          <TitleTask>Tarefas</TitleTask>
+          <Span2>Suas tarefas:</Span2>
         </BottomHeaderView>
       </Header>
 

@@ -11,7 +11,7 @@ import {
   Title, Div1, Div2, FormUser,
   FormWorker, FormInputUserEmail, FormInputWorkerId,
   SubmitButton, ButtonText, FormInputUserPassword,
-  FormInputWorkerPassword, PhoneMask
+  FormInputWorkerPassword, PhoneMask, StyledScrollView
 } from './styles';
 // -----------------------------------------------------------------------------
 export default function SignIn({ navigation }) {
@@ -38,66 +38,56 @@ export default function SignIn({ navigation }) {
   }
 
   if (signed) {
-    navigation.navigate('TabRoutes')
+    navigation.navigate('Home')
   }
   // -----------------------------------------------------------------------------
   return (
     <Background>
-      <Container>
-        {logo
-          ? <ImageLogo source={logo} />
-          : <Title>ios sem imagem</Title>
-        }
-        <ImageGodtaskerFont source={godtaskerFont} />
-        <Div1>
-          <Div2>
-            <Title>Funcionários</Title>
-            <FormWorker>
-              {/* <FormInputWorkerId
-                icon="log-in"
-                placeholder="(xx)x-xxxx-xxxx"
-                // ref={idRef}
-                returnKeyType="send"
-                onSubmitEdFormInputWorkerIditing={handleSubmit}
-                value={workerPhoneNumber}
-                onChangeText={setWorkerPhoneNumber}
-              /> */}
-              <PhoneMask
-                type={'cel-phone'}
-                options={
-                  {
-                    maskType: 'BRL',
-                    withDDD: true,
-                    dddMask: '(99) ',
-                  }
-                }
-                placeholder="Número de Whatsapp"
-                returnKeyType="next"
-                value={workerPhoneNumber}
-                onChangeText={
-                  setWorkerPhoneNumber
-                }
-                placeholderTextColor={'#999'}
-                onSubmitEditing={handlePasswordFocus}
-                autoFocus={true}
-              />
-              <FormInputWorkerPassword
-                icon="unlock"
-                placeholder="Senha"
-                returnKeyType="send"
-                onSubmitEditing={handleSubmit}
-                value={workerPassword}
-                onChangeText={setWorkerPassword}
-                placeholderTextColor={'#999'}
-                focus={passwordFocus}
-              />
 
-              <SubmitButton loading={loading} onPress={handleSubmit}>
-                <ButtonText>Entrar</ButtonText>
-              </SubmitButton>
-            </FormWorker>
-          </Div2>
-        </Div1>
+      <Container>
+        <StyledScrollView>
+          <ImageLogo source={logo} />
+          <ImageGodtaskerFont source={godtaskerFont} />
+          <Div1>
+            <Div2>
+              <Title>Funcionários</Title>
+              <FormWorker>
+                <PhoneMask
+                  type={'cel-phone'}
+                  options={
+                    {
+                      maskType: 'BRL',
+                      withDDD: true,
+                      dddMask: '(99) ',
+                    }
+                  }
+                  placeholder="Número de Whatsapp"
+                  returnKeyType="next"
+                  value={workerPhoneNumber}
+                  onChangeText={
+                    setWorkerPhoneNumber
+                  }
+                  placeholderTextColor={'#999'}
+                  onSubmitEditing={handlePasswordFocus}
+                />
+                <FormInputWorkerPassword
+                  icon="unlock"
+                  placeholder="Senha"
+                  returnKeyType="send"
+                  onSubmitEditing={handleSubmit}
+                  value={workerPassword}
+                  onChangeText={setWorkerPassword}
+                  placeholderTextColor={'#999'}
+                  focus={passwordFocus}
+                />
+
+                <SubmitButton loading={loading} onPress={handleSubmit}>
+                  <ButtonText>Entrar</ButtonText>
+                </SubmitButton>
+              </FormWorker>
+            </Div2>
+          </Div1>
+          </StyledScrollView>
       </Container>
     </Background>
   );
