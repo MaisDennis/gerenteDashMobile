@@ -7,10 +7,12 @@ export const HeaderContainer = styled.View`
 export const HeaderText = styled.Text`
 color: #fff;
 font-size: 14px;
-margin: 0 auto 12px;
+margin: 0 auto 0;
+padding: 0 0 4px;
+/* background: #F5F5; */
 `;
 
 export const HeaderImage = styled.Image`
-height: 60px;
-width: 176px;
+height: 46px;
+width: 150px;
 `;

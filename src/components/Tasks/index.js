@@ -104,7 +104,9 @@ export default function Task({ data, navigation }) {
               <DatesAndButtonView>
               <UserView>
                   <Label>Delegado por:</Label>
-                  <StartTime>{data.user.name}</StartTime>
+                  <StartTimeView>
+                    <StartTime>{data.user.name}</StartTime>
+                  </StartTimeView>
                 </UserView>
               </DatesAndButtonView>
               <DatesAndButtonView>

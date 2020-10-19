@@ -32,7 +32,7 @@ export default function TabRoutes({ navigation }) {
       <Header>
         <TopHeaderView>
           <TagView>
-            <Span1>a/c,</Span1>
+            <Span1>Atenção:</Span1>
             <TitleWorkerName>{worker.name}</TitleWorkerName>
           </TagView>
           <TagView>
@@ -44,7 +44,11 @@ export default function TabRoutes({ navigation }) {
           </TagView>
         </TopHeaderView>
         <BottomHeaderView>
-          <Span2>Suas tarefas:</Span2>
+          {
+            Platform.OS === 'ios'
+              ? <Span2>Suas tarefas:</Span2>
+              : <Span2>Suas missões:</Span2>
+          }
         </BottomHeaderView>
       </Header>
 
