@@ -97,7 +97,7 @@ export const Time = styled.Text`
 export const StartTimeView = styled.View`
 border-radius: 4px;
 padding: 0 4px;
-/* background: #F5F5F5; */
+background: #F5F5F5;
 `;
 
 export const StartTime = styled.Text`

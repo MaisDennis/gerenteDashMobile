@@ -66,7 +66,7 @@ export default function App() {
             // headerBackTitleVisible: false,
             headerStyle: {
               backgroundColor: '#222',
-              height: 80,
+              height: 90,
             },
           }}
         />
@@ -78,17 +78,17 @@ export default function App() {
         />
         <Stack.Screen name="Message" component={Message}
           options={{
-            title: 'Mensagem p/ chefe',
+            title: 'Enviar mensagem',
             headerShown: true,
             headerBackTitleVisible: true,
             headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'normal',
+              fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 80,
+              height: 90,
             },
           }}
         />
@@ -99,12 +99,12 @@ export default function App() {
             headerBackTitleVisible: true,
             headerTintColor: '#fff',
             headerTitleStyle: {
-              fontWeight: 'normal',
+              fontWeight: 'bold',
               fontSize: 24,
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 80,
+              height: 90,
             },
           }}
         />
