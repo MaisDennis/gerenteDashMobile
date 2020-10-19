@@ -35,6 +35,7 @@ export const Container = styled.ScrollView.attrs({
   top: 5px;
   margin: 0 auto;
   width: 90%;
+  height: 800px;
   background: #fff;
   flex: 1;
   padding: 0;
@@ -43,15 +44,17 @@ export const Container = styled.ScrollView.attrs({
 
 export const StyledKeyboardAvoiding = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'position',
+  behavior: 'padding',
 })`
   /* background: #58595B; */
   width: 100%;
+  height: 150%;
 `;
 
 export const Form = styled.View`
   top: 0;
   width: 100%;
+  height: 150%;
   margin: 0;
   /* background: #ff5f; */
 `;
@@ -153,7 +156,7 @@ export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: { padding: 30 },
 })`
-  height: 100%;
+  height: 150%;
 `;
 
 

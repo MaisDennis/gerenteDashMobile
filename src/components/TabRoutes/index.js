@@ -36,8 +36,8 @@ export default function TabRoutes({ navigation }) {
             <TitleWorkerName>{worker.name}</TitleWorkerName>
           </TagView>
           <TagView>
-            <ExitButton>
-              <ExitButtonText onPress={handleLogout}>Sair</ExitButtonText>
+            <ExitButton onPress={handleLogout}>
+              <ExitButtonText>Sair</ExitButtonText>
               {/* <Icon name='disc' size={20} color='#f64C75' onPress={handleLogout}/> */}
             </ExitButton>
 

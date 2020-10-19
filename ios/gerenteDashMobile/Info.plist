@@ -57,7 +57,10 @@
 	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>Godtasker requires access to your phone`s camera.</string>
-	<key>UIAppFonts</key>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+<string>Your message to user when the photo library is accessed for the first time</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Your message to user when the photo library is accessed for the first time</string>
 	<array>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
