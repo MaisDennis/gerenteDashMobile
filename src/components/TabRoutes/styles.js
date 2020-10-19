@@ -15,7 +15,7 @@ export const TopHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   /* background: #F5F; */
 `;
 
@@ -38,13 +38,15 @@ export const ExitButtonText = styled.Text`
 
 export const TagView = styled.View`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   /* background: #444; */
 `;
 
 export const Span1 = styled.Text`
   font-weight: bold;
   font-size: 14px;
+  margin-right: 8px;
   /* margin-bottom: 5px; */
   /* color: #888; */
 `;
@@ -67,7 +69,7 @@ export const BottomHeaderView = styled.View`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 10px;
+  margin-top: 0px;
 `;
 
 export const TitleTask = styled.Text`

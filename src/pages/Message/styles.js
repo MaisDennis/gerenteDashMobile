@@ -44,7 +44,7 @@ export const Container = styled.ScrollView.attrs({
 
 export const StyledKeyboardAvoiding = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
-  behavior: 'padding',
+  behavior: 'position',
 })`
   /* background: #58595B; */
   width: 100%;
@@ -121,7 +121,7 @@ export const SubmitButton = styled(Button)`
 `;
 
 export const WhatsappButton = styled(Button)`
-  margin: 4px auto 10px;
+  margin: 4px auto 500px;
   background: #00ff00;
   width: 90%;
 `;

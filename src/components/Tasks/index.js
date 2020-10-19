@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Button from '~/components/Button';
 import {
   Container, TitleView, TaskIcon, NameText, DescriptionView, DescriptionBorderView, DescriptionSpan,
-  DatesAndButtonView, TagView, Label, Time, StartTime, DueTime,  ButtonView, HrLine, MessageButton,
+  DatesAndButtonView, TagView, Label, Time, StartTimeView, StartTime, DueTimeView, DueTime,  ButtonView, HrLine, MessageButton,
   FinishedButton, ConfirmButton, UserView
 } from './styles';
 // -----------------------------------------------------------------------------
@@ -68,7 +68,7 @@ export default function Task({ data, navigation }) {
               <DatesAndButtonView>
                 <TagView>
                   <Label>Início</Label>
-                    <Time style={{ color: '#999'}}>{formattedDate(data.start_date)}</Time>
+                  <Time style={{ color: '#999'}}>{formattedDate(data.start_date)}</Time>
                 </TagView>
                 <TagView>
                   <Label>Prazo</Label>
@@ -110,11 +110,15 @@ export default function Task({ data, navigation }) {
               <DatesAndButtonView>
                 <TagView>
                   <Label>Início</Label>
+                  <StartTimeView>
                     <StartTime pastDueDate={pastDueDate()}>{formattedDate(data.start_date)}</StartTime>
+                  </StartTimeView>
                 </TagView>
                 <TagView>
                   <Label>Prazo</Label>
+                  <DueTimeView>
                     <DueTime pastDueDate={pastDueDate()}>{formattedDate(data.due_date)}</DueTime>
+                  </DueTimeView>
                 </TagView>
               </DatesAndButtonView>
               <HrLine/>

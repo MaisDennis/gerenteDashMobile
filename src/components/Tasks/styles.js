@@ -87,24 +87,32 @@ export const Label = styled.Text`
 
 export const Time = styled.Text`
   color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
-  border-radius: 4px;
+
   padding: 2px;
   font-weight: bold;
   font-size: 14px;
   margin: 2px auto;
 `;
+
+export const StartTimeView = styled.View`
+border-radius: 4px;
+padding: 0 4px;
+/* background: #F5F5F5; */
+`;
+
 export const StartTime = styled.Text`
-  background: #F5F5F5;
-  border-radius: 4px;
-  padding: 2px;
   font-weight: bold;
   font-size: 14px;
   margin: 2px auto;
 `;
+
+export const DueTimeView = styled.View`
+border-radius: 4px;
+padding: 0 4px;
+background: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
+`;
+
 export const DueTime = styled.Text`
-  background: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
-  border-radius: 4px;
-  padding: 2px;
   font-weight: bold;
   font-size: 14px;
   margin: 2px auto;
