@@ -7,7 +7,7 @@ export const HeaderContainer = styled.View`
 export const HeaderText = styled.Text`
 color: #fff;
 font-size: 14px;
-margin: auto;
+margin: 0 auto 12px;
 `;
 
 export const HeaderImage = styled.Image`

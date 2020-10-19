@@ -43,7 +43,6 @@ export default function SignIn({ navigation }) {
   // -----------------------------------------------------------------------------
   return (
     <Background>
-
       <Container>
         <StyledScrollView>
           <ImageLogo source={logo} />

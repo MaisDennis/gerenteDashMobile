@@ -63,10 +63,10 @@ export default function App() {
             )),
             headerStyleInterpolator: HeaderStyleInterpolators.forFade,
             headerTintColor: '#fff',
-            headerBackTitleVisible: false,
+            // headerBackTitleVisible: false,
             headerStyle: {
               backgroundColor: '#222',
-              height: 100,
+              height: 80,
             },
           }}
         />
@@ -78,7 +78,7 @@ export default function App() {
         />
         <Stack.Screen name="Message" component={Message}
           options={{
-            title: 'Reportar',
+            title: 'Mensagem p/ chefe',
             headerShown: true,
             headerBackTitleVisible: true,
             headerTintColor: '#fff',
@@ -88,13 +88,13 @@ export default function App() {
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 100,
+              height: 80,
             },
           }}
         />
         <Stack.Screen name="Confirm" component={Confirm}
           options={{
-            title: 'Confirmar',
+            title: 'Finalizar a tarefa',
             headerShown: true,
             headerBackTitleVisible: true,
             headerTintColor: '#fff',
@@ -104,7 +104,7 @@ export default function App() {
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 100,
+              height: 80,
             },
           }}
         />

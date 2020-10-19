@@ -29,7 +29,7 @@ export const ImageLogo = styled.Image`
 export const ImageGodtaskerFont = styled.Image`
   width: 240px;
   height: 80px;
-  margin: auto auto 24px;
+  margin: auto auto 4px;
 
 `;
 

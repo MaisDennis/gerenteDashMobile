@@ -32,7 +32,7 @@ export default function TabRoutes({ navigation }) {
       <Header>
         <TopHeaderView>
           <TagView>
-            <Span1>Atenção,</Span1>
+            <Span1>a/c,</Span1>
             <TitleWorkerName>{worker.name}</TitleWorkerName>
           </TagView>
           <TagView>
