@@ -43,13 +43,15 @@ export default function Confirm({ route }) {
       });
 
       try {
-        const response = await api.post('signatures', formData, {
-          headers: {
-            'accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.8',
-            'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
-          }
-        });
+        const response = await api.post('signatures', formData,
+          // {
+          //   headers: {
+          //     'accept': 'application/json',
+          //     'Accept-Language': 'en-US,en;q=0.8',
+          //     'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+          //   }
+          // }
+        );
 
         const { signature_id } = response.data;
 

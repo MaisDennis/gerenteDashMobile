@@ -63,10 +63,10 @@ export default function App() {
             )),
             headerStyleInterpolator: HeaderStyleInterpolators.forFade,
             headerTintColor: '#fff',
-            headerBackTitleVisible: true,
+            headerBackTitleVisible: false,
             headerStyle: {
               backgroundColor: '#222',
-              height: 90,
+              height: 100,
             },
           }}
         />
@@ -88,7 +88,7 @@ export default function App() {
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 60,
+              height: 100,
             },
           }}
         />
@@ -104,7 +104,7 @@ export default function App() {
             },
             headerStyle: {
               backgroundColor: '#222',
-              height: 60,
+              height: 100,
             },
           }}
         />

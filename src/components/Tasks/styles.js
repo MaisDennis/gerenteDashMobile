@@ -17,12 +17,15 @@ export const Container = styled.View`
 export const TaskIcon = styled(Icon)`
 color: #222;
 font-size: 20px;
+color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
 `;
 
 export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
   margin: 8px;
+  border-radius: 4px;
+  padding: 4px 18px;
 `;
 
 export const NameText = styled.Text`
@@ -50,7 +53,7 @@ export const DescriptionBorderView = styled.View`
   align-items: center;
   width: 90%;
   padding: 4px;
-  background: #fff;
+  /* background: #F5F5F5; */
   border-radius: 4px;
 `;
 
@@ -84,7 +87,7 @@ export const Label = styled.Text`
 
 export const Time = styled.Text`
   color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 2px;
   font-weight: bold;
   font-size: 14px;
@@ -92,7 +95,7 @@ export const Time = styled.Text`
 `;
 export const StartTime = styled.Text`
   background: #F5F5F5;
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 2px;
   font-weight: bold;
   font-size: 14px;
@@ -100,7 +103,7 @@ export const StartTime = styled.Text`
 `;
 export const DueTime = styled.Text`
   background: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'};
-  border-radius: 16px;
+  border-radius: 4px;
   padding: 2px;
   font-weight: bold;
   font-size: 14px;
