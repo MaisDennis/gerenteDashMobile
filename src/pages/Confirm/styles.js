@@ -10,9 +10,8 @@ export const StyledScrollView = styled.ScrollView`
 export const Container = styled.SafeAreaView`
   top: 5px;
   margin: 0 auto;
-  height: 600px;
+  height: auto;
   width: 90%;
-  /* margin-bottom: 14px; */
   border-radius: 4px;
   background: #fff;
   display: flex;
@@ -26,17 +25,18 @@ export const Container = styled.SafeAreaView`
 export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
-  margin-top: 14px;
+  margin: 14px auto;
   /* background: #ff5f; */
 `;
 
 export const CameraView = styled.View`
-  background: #F5F5;
-  height: 100%;
+  position: relative;
+  height: auto;
   width: 100%;
-  margin-top: 20px;
+  margin: 0;
   display: flex;
   align-items: center;
+  /* background: #F5F5; */
 `;
 
 export const TaskName = styled.Text`
@@ -47,8 +47,8 @@ export const TaskName = styled.Text`
 `;
 
 export const CameraButton = styled(Button)`
-  top: 40px;
-  margin: 0px auto 10px;
+  /* top: 40px; */
+  margin: 15px auto 200px;
   background: #58595B;
   width: 90%;
 `;

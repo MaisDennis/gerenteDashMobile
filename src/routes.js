@@ -47,67 +47,121 @@ export default function App() {
           ...TransitionPresets.ModalTransition,
         }}
       >
-        <Stack.Screen
-          name="Home"
-          component={TabRoutes}
-          options={{
-            // headerTitle: (
-            //   <>
-            //     <Text>
-            //     {todayDate}
-            //     </Text>
-            //   </>
-            // ),
-            headerTitle: (props => (
-            <HeaderView/>
-            )),
-            headerStyleInterpolator: HeaderStyleInterpolators.forFade,
-            headerTintColor: '#fff',
-            // headerBackTitleVisible: false,
-            headerStyle: {
-              backgroundColor: '#222',
-              height: 90,
-            },
-          }}
-        />
         <Stack.Screen name="SignIn" component={SignIn}
           options={{
             title: 'Entrar',
             headerShown: false,
           }}
         />
-        <Stack.Screen name="Message" component={Message}
-          options={{
-            title: 'Enviar mensagem',
-            headerShown: true,
-            headerBackTitleVisible: true,
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize: 24,
-            },
-            headerStyle: {
-              backgroundColor: '#222',
-              height: 90,
-            },
-          }}
-        />
-        <Stack.Screen name="Confirm" component={Confirm}
-          options={{
-            title: 'Finalizar a tarefa',
-            headerShown: true,
-            headerBackTitleVisible: true,
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-              fontSize: 24,
-            },
-            headerStyle: {
-              backgroundColor: '#222',
-              height: 90,
-            },
-          }}
-        />
+        {
+          Platform.OS === 'ios'
+            ? <Stack.Screen
+                name="Home"
+                component={TabRoutes}
+                options={{
+                  headerTitle: (props => (
+                  <HeaderView/>
+                  )),
+                  headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+                  headerTintColor: '#fff',
+                  // headerBackTitleVisible: false,
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 90,
+                  },
+                }}
+              />
+            : <Stack.Screen
+                name="Home"
+                component={TabRoutes}
+                options={{
+                  headerTitle: (props => (
+                  <HeaderView/>
+                  )),
+                  headerStyleInterpolator: HeaderStyleInterpolators.forFade,
+                  headerTintColor: '#fff',
+                  // headerBackTitleVisible: false,
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 80,
+                  },
+                }}
+              />
+        }
+        {
+          Platform.OS === 'ios'
+            ? <Stack.Screen name="Message" component={Message}
+                options={{
+                  title: 'Enviar mensagem',
+                  headerShown: true,
+                  headerBackTitleVisible: true,
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 24,
+                  },
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 90,
+                  },
+                }}
+              />
+            : <Stack.Screen name="Message" component={Message}
+                options={{
+                  title: 'Enviar mensagem',
+                  headerShown: true,
+                  headerBackTitleVisible: true,
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                  },
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 80,
+                  },
+                }}
+              />
+        }
+        {
+          Platform.OS === 'ios'
+            ? <Stack.Screen
+                name="Confirm"
+                component={Confirm}
+                options={{
+                  title: 'Finalizar a tarefa',
+                  headerShown: true,
+                  headerBackTitleVisible: true,
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 24,
+                  },
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 90,
+                  },
+                }}
+              />
+            : <Stack.Screen
+                name="Confirm"
+                component={Confirm}
+                options={{
+                  title: 'Finalizar a tarefa',
+                  headerShown: true,
+                  headerBackTitleVisible: true,
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize: 18,
+                  },
+                  headerStyle: {
+                    backgroundColor: '#222',
+                    height: 80,
+                  },
+                }}
+              />
+        }
       </Stack.Navigator>
     </NavigationContainer>
   );

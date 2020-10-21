@@ -121,7 +121,7 @@ export const SubmitButton = styled(Button)`
 `;
 
 export const WhatsappButton = styled(Button)`
-  margin: 4px auto 350px;
+  margin: 15px auto 200px;
   background: #00ff00;
   width: 90%;
 `;
