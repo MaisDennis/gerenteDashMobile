@@ -96,17 +96,17 @@ export default function Confirm({ route }) {
           <Icon name="clipboard" size={20} style={{ color: '#222'}}/>
           <TaskName>{taskName}</TaskName>
         </TitleView>
-
+<CameraView>
         <RNCamera
           ref={camera}
           style={{
-            top: 40,
+            top: 0,
             height: 360,
-            width: 325,
+            width: 320,
             marginTop: 0,
-            marginBottom: 20,
-            marginLeft: 0,
-            marginRight: 0,
+            marginBottom: 0,
+            marginLeft: 10,
+            marginRight: 10,
             // height: 200,
             // width: 350,
           }}
@@ -114,7 +114,7 @@ export default function Confirm({ route }) {
           flashMode={RNCamera.Constants.FlashMode.on}
           captureAudio={false}
         />
-
+</CameraView>
         <CameraButton onPress={() => takePicture()}><Icon name='camera' size={20} color='#fff'/></CameraButton>
       </Container>
       </StyledScrollView>
