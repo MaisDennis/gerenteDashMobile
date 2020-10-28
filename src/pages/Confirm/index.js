@@ -100,7 +100,7 @@ export default function Confirm({ route }) {
         <RNCamera
           ref={camera}
           style={{
-            top: 0,
+            top: 40,
             height: 360,
             width: 320,
             marginTop: 0,
