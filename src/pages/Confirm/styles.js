@@ -47,7 +47,7 @@ export const TaskName = styled.Text`
 `;
 
 export const CameraButton = styled(Button)`
-  top: 40px;
+  top: 80px;
   margin: 15px auto 200px;
   background: #58595B;
   width: 90%;
